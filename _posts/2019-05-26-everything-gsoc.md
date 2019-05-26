@@ -68,5 +68,5 @@ I plan to finish writing basic CRUD operations for the JWTManager and also imple
 
 ---
 
-Thanks for making it through the entire post. If you have any questions/suggestions do send me an email at <tushar1997@gmail.com>.
+Thanks for making it through the entire post. If you have any questions/suggestions leave a comment or send me an email at <tushar1997@gmail.com>.
 {: style="text-align: justify;"}

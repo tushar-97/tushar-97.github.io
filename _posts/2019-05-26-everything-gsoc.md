@@ -171,6 +171,7 @@ The pull requests for the same are [#74](https://github.com/sharmalab/bindaas/pu
 ### <a name="week2-pending-tasks"></a>Pending Tasks
 1. Testing, testing and loads of testing!
 2. Proper documentation of all new features added
+3. Finish integration of JWT into the admin console (front end side)
 
 ### <a name="week2-design-updates"></a>Design Updates
 The trusted-app-client was added when support for API Keys came to bindaas. This is why the client was written with only API Keys in mind. The client now supports JWT and has also been restructured in a way to support any further protocol additions to bindaas. Existing users will not face any syntax changes, although a new command line argument for protocol has been added. This argument is optional and assumes the value of api_key by default.

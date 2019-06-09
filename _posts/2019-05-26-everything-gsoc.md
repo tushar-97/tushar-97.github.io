@@ -155,7 +155,7 @@ I plan to integrate [SecurityTokenService](https://github.com/sharmalab/security
 
 ---
 ## Week 2
-June 3<sup>rd</sup> - June 9<sup>th</sup>
+June 3<sup>rd</sup> - June 9<sup>th</sup>  
 I made good progress this week, by updating the [trusted-app-client](https://github.com/sharmalab/bindaas/tree/add-jwt-token/tools/trusted-app-client) to support JWTs. We also got a lot of code reviews done and had around ~2000 lines of code merged into the bindaas repository (on the add-jwt-token branch).
 {: style="text-align: justify;"}
 

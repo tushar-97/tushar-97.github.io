@@ -4,7 +4,7 @@ title: Everything GSoC!
 bigimg: /img/gsoc.png
 tags: [gsoc, bindaas]
 ---
-[**\[UPDATE: Week 1\]**](#week-1) This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
+[**\[UPDATE: Week 2\]**](#week-2) This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
 {: style="text-align: justify;"}
 
 This blog post is to document my progress through the weeks. I will keep updating this post every week. So without further ado
@@ -13,6 +13,7 @@ This blog post is to document my progress through the weeks. I will keep updatin
 ## Security Enhancements to Bindaas 
 - [Week 0](#week-0)
 - [Week 1](#week-1)
+- [Week 2](#week-2)
 
 ---
 ## Week 0
@@ -21,6 +22,9 @@ After getting done with my university examinations, I decided to start writing a
 {: style="text-align: justify;"}
 
 Relevant commits can be found on the [gsoc-week0](https://github.com/tushar-97/bindaas/tree/gsoc-week0) branch.
+{: style="text-align: justify;"}
+
+The pull request for the same is [#72](https://github.com/sharmalab/bindaas/pull/72)
 {: style="text-align: justify;"}
 
 ### <a name="week0-completed-tasks"></a>Completed Tasks
@@ -96,6 +100,9 @@ http://localhost:9099/services/project/provider/query/get_data
 Relevant commits can be found on the [gsoc-week1](https://github.com/tushar-97/bindaas/tree/gsoc-week1) branch.
 {: style="text-align: justify;"}
 
+The pull request for the same is [#73](https://github.com/sharmalab/bindaas/pull/73)
+{: style="text-align: justify;"}
+
 ### <a name="week1-completed-tasks"></a>Completed Tasks
 1. Ensure the JWT Manager can support basic CRUD operations
 2. Basic changes to ensure both JWT and API_KEY protocols can work independently.
@@ -145,6 +152,101 @@ Above are two valid configuration that can be set in `bindaas.config.json`. Othe
 ### <a name="week1-plans"></a>Upcoming Week Plans
 I plan to integrate [SecurityTokenService](https://github.com/sharmalab/securitytokenservice) with the logic I have written for generating access tokens. After a basic implementation is done I will do some testing for all features that will be completed by next week.
 {: style="text-align: justify;"}
+
+---
+## Week 2
+June 3<sup>rd</sup> - June 9<sup>th</sup>
+I made good progress this week, by updating the [trusted-app-client](https://github.com/sharmalab/bindaas/tree/add-jwt-token/tools/trusted-app-client) to support JWTs. We also got a lot of code reviews done and had around ~2000 lines of code merged into the bindaas repository (on the add-jwt-token branch).
+{: style="text-align: justify;"}
+
+All commits from now on can be tracked on the [add-jwt-token](https://github.com/tushar-97/bindaas/tree/add-jwt-token) branch.
+{: style="text-align: justify;"}
+
+The pull requests for the same are [#74](https://github.com/sharmalab/bindaas/pull/74),[#76](https://github.com/sharmalab/bindaas/pull/76),[#77](https://github.com/sharmalab/bindaas/pull/77) & [#78](https://github.com/sharmalab/bindaas/pull/78)
+{: style="text-align: justify;"}
+
+### <a name="week2-completed-tasks"></a>Completed Tasks
+1. Make trusted-app-client support JWT
+
+### <a name="week2-pending-tasks"></a>Pending Tasks
+1. Testing, testing and loads of testing!
+2. Proper documentation of all new features added
+
+### <a name="week2-design-updates"></a>Design Updates
+The trusted-app-client was added when support for API Keys came to bindaas. This is why the client was written with only API Keys in mind. The client now supports JWT and has also been restructured in a way to support any further protocol additions to bindaas. Existing users will not face any syntax changes, although a new command line argument for protocol has been added. This argument is optional and assumes the value of api_key by default.
+{: style="text-align: justify;"}
+
+The endpoints for managing API Keys and JWTs have been renamed to more generic. These are internal to bindaas and do not affect it's users. Specifically
+{: style="text-align: justify;"}
+- /listAPIKeys endpoint is now /listAuthenticationTokens
+- /issueShortLivedApiKey endpoint is now /issueShortLivedAuthenticationToken
+
+The difference in using the client can be seen below:
+```
+# Earlier client
+
+> java -jar trusted-app-client-0.0.1-jar-with-dependencies.jar -action a \
+-username admin -id demo-id -secret demo-secret-key -lifetime 360000 \
+-url http://localhost:9099/trustedApplication -expires 12/12/2025
+
+Server Returned :
+{
+  "api_key": "008b59a8-b5ab-40de-977a-426052fa276b",
+  "username": "admin",
+  "applicationID": "demo-id",
+  "expires": "Fri Dec 12 00:00:00 IST 2025",
+  "applicationName": "Demo Application"
+}
+```
+```
+# Current client without protocol argument
+
+> java -jar trusted-app-client-0.0.1-jar-with-dependencies.jar -action a \
+-username admin -id demo-id -secret demo-secret-key -lifetime 360000 \
+-url http://localhost:9099/trustedApplication -expires 12/12/2025
+
+WARNING: [protocol] not specified. Using default value of api_key
+INFO: Server Returned :
+{
+  "api_key": "008b59a8-b5ab-40de-977a-426052fa276b",
+  "username": "admin",
+  "applicationID": "demo-id",
+  "expires": "Fri Dec 12 00:00:00 IST 2025",
+  "applicationName": "Demo Application"
+}
+```
+```
+# Current client with protocol argument
+
+> java -jar trusted-app-client-0.0.1-jar-with-dependencies.jar -action a \
+-protocol jwt -username admin -id demo-id -secret demo-secret-key \
+-lifetime 360000 -url http://localhost:9099/trustedApplication -expires 12/12/2025
+
+INFO: Server Returned :
+{
+  "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiaW5kYWFzIiwiZXhwIjoxNzY1NDc3ODAwfQ.3gB7tb-Xsysm-So3kVD6_VX47qjK7TMTXiUtZNq_cIQ",
+  "username": "admin",
+  "applicationID": "demo-id",
+  "expires": "Fri Dec 12 00:00:00 IST 2025",
+  "applicationName": "Demo Application"
+}
+```
+As you can see from the above code snippets, you can either get an api_key or a jwt depending upon the protocol you specify. The above code snippets however assume that the server was configured to use api_key in the first two, and jwt in the last code snippet. If there is a mismatch in the argument value and the server's configuration, you get the following error.
+{: style="text-align: justify;"}
+
+```
+SEVERE: edu.emory.cci.bindaas.trusted_app_client.app.exception.ServerException: {
+  "error": "Authentication protocol in request does not match with server's configuration"
+}
+```
+
+The same logic is applicable for all four operations supported by the client, i.e adding/revoking a user, issuing a short lived token and getting a list of tokens.
+{: style="text-align: justify;"}
+
+### <a name="week2-plans"></a>Upcoming Week Plans
+As per my project proposal I will now implement scope based access. I will also be testing my code for a few days and will try to update the documentation for all the features I have added/modified. An alpha release of Bindaas v4 is on the horizon!
+{: style="text-align: justify;"}
+
 ---
 
 Thanks for making it through the entire post. If you have any questions/suggestions do leave a comment below.

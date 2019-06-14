@@ -201,7 +201,7 @@ Server Returned :
 ```
 # Current client without protocol argument
 
-> java -jar trusted-app-client-0.0.1-jar-with-dependencies.jar -action a \
+> java -jar trusted-app-client-0.0.1.jar -action a \
 -username admin -id demo-id -secret demo-secret-key -lifetime 360000 \
 -url http://localhost:9099/trustedApplication -expires 12/12/2025
 
@@ -218,7 +218,7 @@ INFO: Server Returned :
 ```
 # Current client with protocol argument
 
-> java -jar trusted-app-client-0.0.1-jar-with-dependencies.jar -action a \
+> java -jar trusted-app-client-0.0.1.jar -action a \
 -protocol jwt -username admin -id demo-id -secret demo-secret-key \
 -lifetime 360000 -url http://localhost:9099/trustedApplication -expires 12/12/2025
 

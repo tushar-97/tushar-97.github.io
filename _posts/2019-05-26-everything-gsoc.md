@@ -4,7 +4,7 @@ title: Everything GSoC!
 bigimg: /img/gsoc.png
 tags: [gsoc, bindaas]
 ---
-[**\[UPDATE: Week 2\]**](#week-2) This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
+[**\[UPDATE: Week 3\]**](#week-3) This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
 {: style="text-align: justify;"}
 
 This blog post is to document my progress through the weeks. I will keep updating this post every week. So without further ado
@@ -245,9 +245,36 @@ The same logic is applicable for all four operations supported by the client, i.
 {: style="text-align: justify;"}
 
 ### <a name="week2-plans"></a>Upcoming Week Plans
-As per my project proposal I will now implement scope based access. I will also be testing my code for a few days and will try to update the documentation for all the features I have added/modified. An alpha release of Bindaas v4 is on the horizon!
+As per my project proposal I will now implement scope based access. I will also be testing my code for a few days and will try to update the documentation for all the features I have added/modified.
 {: style="text-align: justify;"}
 
+---
+## Week 3
+June 10<sup>th</sup> - June 16<sup>th</sup>  
+I spent the last few days testing out all the features that have been added so far. I am happy to share that there were no major bugs and an alpha release is on the horizon!
+{: style="text-align: justify;"}
+
+As always relevant commits can be tracked on the [add-jwt-token](https://github.com/tushar-97/bindaas/tree/add-jwt-token) branch.
+{: style="text-align: justify;"}
+
+As a side task, I also configured continuous integration for my repository. You can have a look at the [travis-ci](https://github.com/tushar-97/bindaas/tree/travis-ci) branch.
+{: style="text-align: justify;"}
+
+### <a name="week3-completed-tasks"></a>Completed Tasks
+1. Proper testing of features added/modified
+2. Adding trusted-client-app to main pom.xml for distribution and packaging
+3. Fix web-console UI to show protocol dependent terminology and features
+
+### <a name="week3-pending-tasks"></a>Pending Tasks
+1. Official documentation and guide to use the new features
+
+### <a name="week3-design-updates"></a>Design Updates
+No core modules were updated this week. Minor changes have been made to the UI. From now on you will only see, either JWTs or API KEYs in the administrative section of the web console, depending on your configuration. The labels will also change accordingly.
+{: style="text-align: justify;"}
+
+### <a name="week3-plans"></a>Upcoming Week Plans  
+We now move on to the next phase of my project where new features like scope based access and rate limiting will be added. In this regard, I will be having a discussion with my mentors, Pradeeban & Ashish, where we will iron out the next steps and design changes to be made to bindaas.
+{: style="text-align: justify;"}
 ---
 
 Thanks for making it through the entire post. If you have any questions/suggestions do leave a comment below.

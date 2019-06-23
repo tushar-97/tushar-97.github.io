@@ -4,7 +4,7 @@ title: Everything GSoC!
 bigimg: /img/gsoc.png
 tags: [gsoc, bindaas]
 ---
-[**\[UPDATE: Week 3\]**](#week-3) This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
+[**\[UPDATE: Week 4\]**](#week-4) This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
 {: style="text-align: justify;"}
 
 This blog post is to document my progress through the weeks. I will keep updating this post every week. So without further ado
@@ -14,6 +14,8 @@ This blog post is to document my progress through the weeks. I will keep updatin
 - [Week 0](#week-0)
 - [Week 1](#week-1)
 - [Week 2](#week-2)
+- [Week 3](#week-3)
+- [Week 4](#week-4)
 
 ---
 ## Week 0
@@ -275,6 +277,36 @@ No core modules were updated this week. Minor changes have been made to the UI. 
 ### <a name="week3-plans"></a>Upcoming Week Plans  
 We now move on to the next phase of my project where new features like scope based access and rate limiting will be added. In this regard, I will be having a discussion with my mentors, Pradeeban & Ashish, where we will iron out the next steps and design changes to be made to bindaas.
 {: style="text-align: justify;"}
+
+---
+## Week 4
+June 17<sup>th</sup> - June 23<sup>rd</sup>  
+I have officialy spent a month working on Bindaas now! Basic functionalities to support JWTs have been added. We now move on to managing and restricting access to Bindaas.
+{: style="text-align: justify;"}
+
+As always relevant commits can be tracked on the [add-jwt-token](https://github.com/tushar-97/bindaas/tree/add-jwt-token) branch.
+{: style="text-align: justify;"}
+
+### <a name="week4-completed-tasks"></a>Completed Tasks
+1. Add authentication via Google Sign In.
+
+### <a name="week4-pending-tasks"></a>Pending Tasks
+1. Limiting access to features based on roles assigned to users
+2. Official documentation and guide to use the new features
+
+### <a name="week4-design-updates"></a>Design Updates
+As per last week's discussion we will allow users to sign in via their Google accounts. Their roles will be fetched from an LDAP server and access to features will be limited accordingly. The web console was designed to be used by administrative users only. Since we will now allow non administrative users to login, there will be changes to show limited features. The directory strcuture that we will be using to maintain and query records is as follows:
+{: style="text-align: justify;"}
+![Directory Structure](/img/ldap-model.jpg)
+{: style="display: block; margin-left: auto; margin-right: auto; width: 80%;"}
+
+The above is a temporary structure and we might move forward with a custom schema. We will only need to update the queries if we decide to change the directory structure in the future.
+{: style="text-align: justify;"}
+
+### <a name="week4-plans"></a>Upcoming Week Plans
+Since I have never worked with LDAP directories before, I might not be able to finish adding the features in the next few days. I also need to spend some time in integrating Keycloak with my LDAP server.
+{: style="text-align: justify;"}
+
 ---
 
 Thanks for making it through the entire post. If you have any questions/suggestions do leave a comment below.

@@ -16,6 +16,7 @@ This blog post is to document my progress through the weeks. I will keep updatin
 - [Week 2](#week-2)
 - [Week 3](#week-3)
 - [Week 4](#week-4)
+- [First Evaluation](#first-evaluation)
 
 ---
 ## Week 0
@@ -308,6 +309,10 @@ Since I have never worked with LDAP directories before, I might not be able to f
 {: style="text-align: justify;"}
 
 ---
+## First Evaluation
+June 24<sup>th</sup> - June 28<sup>th</sup>  
+RESULT -> **PASSED**  
 
+---
 Thanks for making it through the entire post. If you have any questions/suggestions do leave a comment below.
 {: style="text-align: justify;"}

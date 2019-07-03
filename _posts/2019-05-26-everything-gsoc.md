@@ -4,7 +4,7 @@ title: Everything GSoC!
 bigimg: /img/gsoc.png
 tags: [gsoc, bindaas]
 ---
-[**\[UPDATE: Week 4\]**](#week-4) This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
+[**\[UPDATE: Week 5\]**](#week-5) This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
 {: style="text-align: justify;"}
 
 This blog post is to document my progress through the weeks. I will keep updating this post every week. So without further ado
@@ -16,7 +16,7 @@ This blog post is to document my progress through the weeks. I will keep updatin
 - [Week 2](#week-2)
 - [Week 3](#week-3)
 - [Week 4](#week-4)
-- [First Evaluation](#first-evaluation)
+- [Week 5](#week-5)
 
 ---
 ## Week 0
@@ -282,7 +282,7 @@ We now move on to the next phase of my project where new features like scope bas
 ---
 ## Week 4
 June 17<sup>th</sup> - June 23<sup>rd</sup>  
-I have officialy spent a month working on Bindaas now! Basic functionalities to support JWTs have been added. We now move on to managing and restricting access to Bindaas.
+I have officially spent a month working on Bindaas now! Basic functionalities to support JWTs have been added. We now move on to managing and restricting access to Bindaas.
 {: style="text-align: justify;"}
 
 As always relevant commits can be tracked on the [add-jwt-token](https://github.com/tushar-97/bindaas/tree/add-jwt-token) branch.
@@ -296,7 +296,7 @@ As always relevant commits can be tracked on the [add-jwt-token](https://github.
 2. Official documentation and guide to use the new features
 
 ### <a name="week4-design-updates"></a>Design Updates
-As per last week's discussion we will allow users to sign in via their Google accounts. Their roles will be fetched from an LDAP server and access to features will be limited accordingly. The web console was designed to be used by administrative users only. Since we will now allow non administrative users to login, there will be changes to show limited features. The directory strcuture that we will be using to maintain and query records is as follows:
+As per last week's discussion we will allow users to sign in via their Google accounts. Their roles will be fetched from an LDAP server and access to features will be limited accordingly. The web console was designed to be used by administrative users only. Since we will now allow non administrative users to login, there will be changes to show limited features. The directory structure that we will be using to maintain and query records is as follows:
 {: style="text-align: justify;"}
 ![Directory Structure](/img/ldap-model.jpg)
 {: style="display: block; margin-left: auto; margin-right: auto; width: 80%;"}
@@ -309,9 +309,85 @@ Since I have never worked with LDAP directories before, I might not be able to f
 {: style="text-align: justify;"}
 
 ---
-## First Evaluation
-June 24<sup>th</sup> - June 28<sup>th</sup>  
-RESULT -> **PASSED**  
+# Week 5
+June 24<sup>th</sup> - June 30<sup>th</sup>  
+I continued working on adding authentication and authorization mechanisms to Bindaas. **This week also had the first phase of evaluations and I am happy to share I passed.**
+{: style="text-align: justify;"}
+
+As always relevant commits can be tracked on the [add-jwt-token](https://github.com/tushar-97/bindaas/tree/add-jwt-token) branch.
+{: style="text-align: justify;"}
+
+### <a name="week5-completed-tasks"></a>Completed Tasks
+1. Role based view for the web console.
+
+### <a name="week5-pending-tasks"></a>Pending Tasks
+1. Access control on databases supported by the providers (primary focus on Mongo)
+2. Official documentation and guide to use the new features (long term goal)
+
+### <a name="week5-design-updates"></a>Design Updates/Discussions
+Right till the point of writing this blog, I have been looking at proper authorization mechanisms. Our end goal is to give users access to different subsets of the data with different roles. So user A might be able to read and modify collections X and Y, whereas user B might only be able to view collection Y.
+{: style="text-align: justify;"}
+
+Mongo fortunately allows us Role Based Access Control for our collections. For this we can either chose from a list of predefined or create our own as:
+{: style="text-align: justify;"}
+
+```
+db.createRole({
+
+    createRole: "role-name",
+     
+    privileges: [{ 
+      resource: { db: "db-name", collection: "collection-name" },
+      actions: [ "insert","update","createIndex", "createCollection" ]
+    }],
+     
+    roles: [{ 
+      role: "read", db: "db-name"
+    }]
+ 
+})
+```
+
+After creating these roles we can create different users as:
+{: style="text-align: justify;"}
+
+```
+db.createUser({
+
+    user: "username",
+    pwd: "password",
+    roles: [{
+      role: "role-name", db: "db-name"
+    }]
+
+})
+```
+
+Once we have created these users we can share the credentials (the username/password/db combination is exactly what is required while creating a MongoDB provider with authentication). This step will restrict the user's activity to their roles.
+{: style="text-align: justify;"}
+
+The most important point to note is that **these mechanisms only work across a collection.** Ideally we would want to break down our database into multiple such collections to facilitate role based control. This however, will be a problem for a lot of existing users of Bindaas who are working with large datasets with different schemas. These users would have to restructure everything,add new roles and users which is quite a big task to undertake (with chances of error and a potential performance hit).
+{: style="text-align: justify;"}
+
+On a related note Mongo also provides authentication/authorization via a LDAP instance. The functioning is more or less the same as discussed above. We have to create users and role groups in the LDAP instance and corresponding users in the Mongo instance. Contrary to the highly technical (and at times difficult to understand documentation of Mongo), you can have a look at this well explained article in the documentation: [Authenticate and Authorize Users Using Active Directory via Native LDAP](https://docs.mongodb.com/manual/tutorial/authenticate-nativeldap-activedirectory/)
+{: style="text-align: justify;"}
+
+A second approach to all this is to move the authorization part to the Mongo provider level. As an example to how this might be achieved, consider the following hash map:
+{: style="text-align: justify;"}
+```
+{
+user-role1="mongo query which returns all the possible entires user1 can access",
+user-role2="mongo query which returns all the possible entires user1 can access",
+...
+}
+```
+These roles can be set in the LDAP instance and when a user logs in we can get its corresponding role. After that it is as simple as running two queries - one the user provides and the other corresponding to its role, and finding the intersection of both. The only issue is that writing such queries for the hash map might be difficult. This approach is good for those users who don't want to restructure their mongo collections and where the type of roles will be limited. This approach is a novel idea and I haven't found any discussions on this so far. I am not sure if it will work correctly in all use cases so if you find any issues, do let me know.
+{: style="text-align: justify;"}
+
+
+### <a name="week5-plans"></a>Upcoming Week Plans
+The aim for this week will to be discuss the ideas above, find and resolve issues and then start implementing them. Ideally the entire authentication/authorization process should be finished by end of this month.
+{: style="text-align: justify;"}
 
 ---
 Thanks for making it through the entire post. If you have any questions/suggestions do leave a comment below.

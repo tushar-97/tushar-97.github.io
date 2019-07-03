@@ -328,7 +328,7 @@ As always relevant commits can be tracked on the [add-jwt-token](https://github.
 Right till the point of writing this blog, I have been looking at proper authorization mechanisms. Our end goal is to give users access to different subsets of the data with different roles. So user A might be able to read and modify collections X and Y, whereas user B might only be able to view collection Y.
 {: style="text-align: justify;"}
 
-Mongo fortunately allows us Role Based Access Control for our collections. For this we can either chose from a list of predefined or create our own as:
+Mongo fortunately allows us Role Based Access Control for our collections. For this we can either chose from a list of predefined roles or create our own as:
 {: style="text-align: justify;"}
 
 ```
@@ -366,7 +366,7 @@ db.createUser({
 Once we have created these users we can share the credentials (the username/password/db combination is exactly what is required while creating a MongoDB provider with authentication). This step will restrict the user's activity to their roles.
 {: style="text-align: justify;"}
 
-The most important point to note is that **these mechanisms only work across a collection.** Ideally we would want to break down our database into multiple such collections to facilitate role based control. This however, will be a problem for a lot of existing users of Bindaas who are working with large datasets with different schemas. These users would have to restructure everything,add new roles and users which is quite a big task to undertake (with chances of error and a potential performance hit).
+The most important point to note is that **these mechanisms only work across a collection.** Ideally we would want to break down our database into multiple such collections to facilitate role based control. This however, will be a problem for a lot of existing users of Bindaas who are working with large datasets with different schemas. These users would have to restructure everything, add new roles and users which is quite a big task to undertake (with chances of error and a potential performance hit).
 {: style="text-align: justify;"}
 
 On a related note Mongo also provides authentication/authorization via a LDAP instance. The functioning is more or less the same as discussed above. We have to create users and role groups in the LDAP instance and corresponding users in the Mongo instance. Contrary to the highly technical (and at times difficult to understand documentation of Mongo), you can have a look at this well explained article in the documentation: [Authenticate and Authorize Users Using Active Directory via Native LDAP](https://docs.mongodb.com/manual/tutorial/authenticate-nativeldap-activedirectory/)
@@ -377,7 +377,7 @@ A second approach to all this is to move the authorization part to the Mongo pro
 ```
 {
 user-role1="mongo query which returns all the possible entires user1 can access",
-user-role2="mongo query which returns all the possible entires user1 can access",
+user-role2="mongo query which returns all the possible entires user2 can access",
 ...
 }
 ```

@@ -4,7 +4,7 @@ title: Everything GSoC!
 bigimg: /img/gsoc.png
 tags: [gsoc, bindaas]
 ---
-[**\[UPDATE: Week 5\]**](#week-5) This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
+[**\[UPDATE: Week 6\]**](#week-6) This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
 {: style="text-align: justify;"}
 
 This blog post is to document my progress through the weeks. I will keep updating this post every week. So without further ado
@@ -17,6 +17,7 @@ This blog post is to document my progress through the weeks. I will keep updatin
 - [Week 3](#week-3)
 - [Week 4](#week-4)
 - [Week 5](#week-5)
+- [Week 6](#week-6)
 
 ---
 ## Week 0
@@ -387,6 +388,29 @@ These roles can be set in the LDAP instance and when a user logs in we can get i
 
 ### <a name="week5-plans"></a>Upcoming Week Plans
 The aim for this week will to be discuss the ideas above, find and resolve issues and then start implementing them. Ideally the entire authentication/authorization process should be finished by end of this month.
+{: style="text-align: justify;"}
+
+---
+## Week 6
+July 1<sup>st</sup> - July 7<sup>th</sup>  
+After discussing the appropriate method for adding an authorization flow, I started working on it and also made minor changes/fixes to the authentication flow.
+{: style="text-align: justify;"}
+
+As always relevant commits can be tracked on the [add-jwt-token](https://github.com/tushar-97/bindaas/tree/add-jwt-token) branch.
+{: style="text-align: justify;"}
+
+### <a name="week6-completed-tasks"></a>Completed Tasks
+1. Get role from authenticated user to mongo provider level
+
+### <a name="week6-pending-tasks"></a>Pending Tasks
+1. Complete authorization flow for mongo provider
+
+### <a name="week6-design-updates"></a>Design Updates
+Since making changes to existing databases would not be feasible, we decided to implement authorization at the provider level. The user can list out roles and queries specific to those roles. These will be stored in <role,query> multi map and the results will also be cached for improved performance. Further implementation details can be found in the second apporach of last week's design updates section. We will also be adding a "Enable Authorization" flag to give freedom to the user and to make it backward compatible as well.
+{: style="text-align: justify;"}
+
+### <a name="week6-plans"></a>Upcoming Week Plans  
+I plan to finish basic authorization checks this week and then test it out by creating a random database locally.
 {: style="text-align: justify;"}
 
 ---

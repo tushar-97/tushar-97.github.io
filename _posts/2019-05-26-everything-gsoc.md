@@ -4,7 +4,7 @@ title: Everything GSoC!
 bigimg: /img/gsoc.png
 tags: [gsoc, bindaas]
 ---
-[**\[UPDATE: Week 6\]**](#week-6) This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
+[**\[UPDATE: Week 7\]**](#week-7) This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
 {: style="text-align: justify;"}
 
 This blog post is to document my progress through the weeks. I will keep updating this post every week. So without further ado
@@ -18,6 +18,7 @@ This blog post is to document my progress through the weeks. I will keep updatin
 - [Week 4](#week-4)
 - [Week 5](#week-5)
 - [Week 6](#week-6)
+- [Week 7](#week-7)
 
 ---
 ## Week 0
@@ -411,6 +412,29 @@ Since making changes to existing databases would not be feasible, we decided to 
 
 ### <a name="week6-plans"></a>Upcoming Week Plans  
 I plan to finish basic authorization checks this week and then test it out by creating a random database locally.
+{: style="text-align: justify;"}
+
+---
+## Week 7
+July 8<sup>th</sup> - July 14<sup>th</sup>  
+I added authorization checks for mongo provider this week. We still need to find a better way for doing these checks, but other than that everything is in place.
+{: style="text-align: justify;"}
+
+As always relevant commits can be tracked on the [add-jwt-token](https://github.com/tushar-97/bindaas/tree/add-jwt-token) branch.
+{: style="text-align: justify;"}
+
+### <a name="week7-completed-tasks"></a>Completed Tasks
+1. Added authorization check for mongo queries
+
+### <a name="week6-pending-tasks"></a>Pending Tasks
+1. Replace these checks with more efficient ways, but at the provider level
+
+### <a name="week6-design-updates"></a>Design Updates
+I have added a enable authorization checkbox when we create a mongo provider. This has been kept specific to mongo by design because we aren't rolling out authorization for other data providers at the moment. After enabling authorization the user can specify roles and their corresponding queries. We then parse and run these queries to get a list of authorized _ids. So now whenever the user wants to fetch/update documents we will just check if the _ids of the documents in question are a complete subset of the authorized _ids we had below. The above method is definitely optimal and we are looking for alternatives.
+{: style="text-align: justify;"}
+
+### <a name="week6-plans"></a>Upcoming Week Plans
+Discuss and implement a better authorization check mechanism. This will be followed by extensive testing.  
 {: style="text-align: justify;"}
 
 ---

@@ -4,7 +4,7 @@ title: Everything GSoC!
 bigimg: /img/gsoc.png
 tags: [gsoc, bindaas]
 ---
-[**\[UPDATE: Week 7\]**](#week-7) This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
+[**\[UPDATE: Week 8\]**](#week-8) This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
 {: style="text-align: justify;"}
 
 This blog post is to document my progress through the weeks. I will keep updating this post every week. So without further ado
@@ -19,6 +19,7 @@ This blog post is to document my progress through the weeks. I will keep updatin
 - [Week 5](#week-5)
 - [Week 6](#week-6)
 - [Week 7](#week-7)
+- [Week 8](#week-8)
 
 ---
 ## Week 0
@@ -426,15 +427,49 @@ As always relevant commits can be tracked on the [add-jwt-token](https://github.
 ### <a name="week7-completed-tasks"></a>Completed Tasks
 1. Added authorization check for mongo queries
 
-### <a name="week6-pending-tasks"></a>Pending Tasks
+### <a name="week7-pending-tasks"></a>Pending Tasks
 1. Replace these checks with more efficient ways, but at the provider level
 
-### <a name="week6-design-updates"></a>Design Updates
+### <a name="week7-design-updates"></a>Design Updates
 I have added a enable authorization checkbox when we create a mongo provider. This has been kept specific to mongo by design because we aren't rolling out authorization for other data providers at the moment. After enabling authorization the user can specify roles and their corresponding queries. We then parse and run these queries to get a list of authorized _ids. So now whenever the user wants to fetch/update documents we will just check if the _ids of the documents in question are a complete subset of the authorized _ids we had below. The above method is definitely optimal and we are looking for alternatives.
 {: style="text-align: justify;"}
 
-### <a name="week6-plans"></a>Upcoming Week Plans
+### <a name="week7-plans"></a>Upcoming Week Plans
 Discuss and implement a better authorization check mechanism. This will be followed by extensive testing.  
+{: style="text-align: justify;"}
+
+---
+## Week 8
+July 15<sup>th</sup> - July 21<sup>st</sup>  
+After having discussions and a demo last week, we have decided to use [auth0](https://auth0.com/) which is basically a AaaS (Authentication as a Service) platform. This can handle multiple identity providers and generate tokens for custom endpoints as well.
+{: style="text-align: justify;"}
+
+Since this approach is slightly different I have created a new branch as [add-jwt-token-new](https://github.com/tushar-97/bindaas/tree/add-jwt-token-new).
+{: style="text-align: justify;"}
+
+### <a name="week8-completed-tasks"></a>Completed Tasks
+1. Configuring auth0
+2. Client side authentication
+
+### <a name="week8-pending-tasks"></a>Pending Tasks
+1. Handling login and authentication server side
+2. Verifying tokens from auth0 when calling endpoints
+
+### <a name="week8-design-updates"></a>Design Updates
+To make auth0 work with bindaas we can configure it as:
+1. Create a new account and register a new tenant (bindaas.auth0.com is available).
+2. Create a new Application and configure it for Authorization Code Flow.
+3. Create a new API for the bindaas endpoints.
+4. Configure Connections for identity providers.
+5. Additionally you can add custom JS logic to modify the access token using Roles.
+
+We have implemented the [Authorization Code Flow](https://auth0.com/docs/flows/concepts/auth-code) which ultimately returns a access token to use with the custom api we configured above. We will then verify these tokens using RSA256 (public-private key encryption) whenever any endpoint is called. This will be done between steps 9&10 in the diagram below. These tokens will also have a role which will be used later for authorization checks. The good thing about this is that we have decoupled the generation of tokens from bindaas and can add the auth0 login on any service which runs on top of bindaas. This way we won't have to log into bindaas to get a token and the service itself can make the required endpoint calls.
+{: style="text-align: justify;"}
+
+![Authorization Code Flow](/img/auth-code-flow.png)
+
+### <a name="week8-plans"></a>Upcoming Week Plans
+I will work on completing authentication so that we can call endpoints by using tokens from auth0.
 {: style="text-align: justify;"}
 
 ---

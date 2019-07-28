@@ -4,7 +4,7 @@ title: Everything GSoC!
 bigimg: /img/gsoc.png
 tags: [gsoc, bindaas]
 ---
-[**\[UPDATE: Week 8\]**](#week-8) This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
+[**\[UPDATE: Week 9\]**](#week-9) This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
 {: style="text-align: justify;"}
 
 This blog post is to document my progress through the weeks. I will keep updating this post every week. So without further ado
@@ -20,6 +20,7 @@ This blog post is to document my progress through the weeks. I will keep updatin
 - [Week 6](#week-6)
 - [Week 7](#week-7)
 - [Week 8](#week-8)
+- [Week 9](#week-9)
 
 ---
 ## Week 0
@@ -470,6 +471,49 @@ We have implemented the [Authorization Code Flow](https://auth0.com/docs/flows/c
 
 ### <a name="week8-plans"></a>Upcoming Week Plans
 I will work on completing authentication so that we can call endpoints by using tokens from auth0.
+{: style="text-align: justify;"}
+
+---
+## Week 9
+July 22<sup>nd</sup> - July 28<sup>th</sup>  
+We have finished the integration of auuth0 with Bindaas this week. Both the front end and back end are fully functional and support all the relevant features as before. **This week also had the second phase of evaluations and I am happy to share I passed.**
+{: style="text-align: justify;"}
+
+As always relevant commits can be tracked on the [add-jwt-token-new](https://github.com/tushar-97/bindaas/tree/add-jwt-token-new) branch.
+{: style="text-align: justify;"}
+
+### <a name="week9-completed-tasks"></a>Completed Tasks
+1. Updating back end logic to support and verify auth0 tokens
+2. Updating trusted-app-client
+
+### <a name="week9-pending-tasks"></a>Pending Tasks
+1. UI aspect of displaying long access tokens from auth0
+2. Configure LDAP client for auth0
+3. Assigning role to every user
+
+### <a name="week9-design-updates"></a>Design Updates
+At this point, I would like to reiterate that Bindaas can be configured in two ways. One will make it run like it used to, using API KEYs. This supports username/password and LDAP authentication but certain configurations have to be changed every time. The other way uses auth0 to generate access tokens for successful logins. This supports multiple identity providers and ldap. No changes have to made to switch between providers. The valid configurations for bindaas.config.json are:
+{: style="text-align: justify;"}
+
+```json
+{
+  "authenticationProviderClass": "edu.emory.cci.bindaas.security.impl.DBAuthenticationProvider",
+  "authenticationProtocol": "API_KEY"
+}
+```
+
+```json
+{
+  "authenticationProviderClass": "edu.emory.cci.bindaas.security.impl.OAuthProvider",
+  "authenticationProtocol": "JWT"
+}
+```
+
+If using trusted-app-client with JWTs, you can only revoke and list users as the other two operations (authorizing a user and creating a short token) require generation of access tokens which is now handled by auth0. Therefore the user will have to login using the web-console. Ideally the login will be placed on the application running on top of Bindaas. So you can directly use the access token from the login to call Bindaas' endpoints.
+{: style="text-align: justify;"}
+
+### <a name="week9-plans"></a>Upcoming Week Plans  
+I plan to finish adding roles to every login to be used for authorization checks and then start working on the authorization part itself.
 {: style="text-align: justify;"}
 
 ---

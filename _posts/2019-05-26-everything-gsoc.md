@@ -4,7 +4,7 @@ title: Everything GSoC!
 bigimg: /img/gsoc.png
 tags: [gsoc, bindaas]
 ---
-[**\[UPDATE: Week 10\]**](#week-10) This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
+This year I got selected for the Google Summer of Code program. For the next three moths I will be working with Biomedical Informatics, Emory University, in particular on their Data Integration Middleware called **Bindaas**. You can read more about my proposal and the organisation [here](https://summerofcode.withgoogle.com/projects/#5940411036598272).
 {: style="text-align: justify;"}
 
 This blog post is to document my progress through the weeks. I will keep updating this post every week. So without further ado
@@ -22,6 +22,8 @@ This blog post is to document my progress through the weeks. I will keep updatin
 - [Week 8](#week-8)
 - [Week 9](#week-9)
 - [Week 10](#week-10)
+- [Week 11](#week-11)
+- [Week 12](#week-12)
 
 ---
 ## Week 0
@@ -548,5 +550,56 @@ auth0.domain=your-domain.auth0.com
 I plan to finish the authorization process this week so that I can focus on documentation the entire next week. This way everything can be wrapped up by 18th August.  
 {: style="text-align: justify;"}
 ---
+
+## Week 11
+August 5<sup>th</sup> - August 11<sup>th</sup>  
+I was able to add authorization checks for Mongo queries this week. These can be enabld by specifying a authorization collection when creating a provider and can be used to limit access to parts of a collection. 
+{: style="text-align: justify;"}
+
+As always relevant commits can be tracked on the [add-jwt-token-new](https://github.com/tushar-97/bindaas/tree/add-jwt-token-new) branch.
+{: style="text-align: justify;"}
+
+### <a name="week11-completed-tasks"></a>Completed Tasks
+1. Authorization for Mongo queries
+
+### <a name="week11-pending-tasks"></a>Pending Tasks
+1. Documentation/guides for all new features added
+
+### <a name="week11-design-updates"></a>Design Updates
+Authorization can be enabled by specifying the collection which has the project-role mapping. Authorization is diabled for older project files by default. Furthermore the collection must be in the following format (the name of the collection can be anything):
+{: style="text-align: justify;"}                                                                                                                                                           
+```
+> db.authorizationRules.find()
+{"projectName" : "sepsis-all", "roles" : "admin,dev,user" }
+{"projectName" : "sepsis-admin", "roles" : "admin" }
+
+```
+                                                                                                                                                           
+Additionally the collection which is being queried must have the `project` attribute. For example
+{: style="text-align: justify;"}
+```
+> db.patientData.find()
+{"patientId" : "EH101", "name" : "John Doe", "project" : "sepsis-all"}
+{"patientId" : "EH102", "name" : "Joe Shmoe", "project" : "sepsis-admin"}
+```
+Authorization can be toggled from the data provider's configuration. As an example the user should enter `authorizationRules` as the `Authorization Rules Collection Name` when creating a new provider. An empty string will mean that authorization has not been enabled.                                                                                        
+{: style="text-align: justify;"}
+
+![Mongo Authorization](/img/mongo-auth.png)
+
+### <a name="week11-plans"></a>Upcoming Week Plans
+All code has been added and will be merged over the weekend. The only thing left is to create a wiki which I will do in the coming week.
+{: style="text-align: justify;"}
+---
+
+## Week 12
+August 12<sup>th</sup> - August 18<sup>th</sup>  
+I spent the last week of the official coding period in writing the wiki for all the work I have done over the summer. We will be releasing Bindaas v4.0.0 soon and you can find the release notes [here](https://github.com/tushar-97/bindaas/wiki/Bindaas-4.0.0-Release-Notes).                                                                                      
+{: style="text-align: justify;"}
+
+With this weekly update we come to the end of GSoC. It has been an exciting and fulfilling experience. I would like to thank my mentors [Pradeeban Kathiravelu](https://kkpradeeban.blogspot.com) and [Ashish Sharma](http://www.bmi.emory.edu/ashishsharma) for their continued help and support. Do check my next blog post for a final update on GSoC.
+
+---
+
 Thanks for making it through the entire post. If you have any questions/suggestions do leave a comment below.
 {: style="text-align: justify;"}

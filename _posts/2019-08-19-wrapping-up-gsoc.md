@@ -104,7 +104,7 @@ Authorization is only available for Mongo provider at the time of writing. We pl
 Please cite the below, if you use Bindaas in your research
 
 [1] Kathiravelu, P., Saghar, Y. N., Aggarwal, T. & Sharma, A. (2019). Data Services with Bindaas:
-RESTful Interfaces for Diverse Data Sources. Under Review
+RESTful Interfaces for Diverse Data Sources. In IEEE International Conference on Big Data. Dec. 2019.
 
 ## Acknowledgements
 The entire GSoC experience has been a very fulfilling one, in part due to my mentor [Pradeeban Kathiravelu](https://kkpradeeban.blogspot.com), who gave me the space to work on new ideas and just the right amount of guidance to see them through to fruition. I would also like to thank my mentor [Ashish Sharma](http://www.bmi.emory.edu/ashishsharma) and everyone else at Sharmalab, Emory University for all their help and support. We will continue to bring new features to Bindaas to help you with your big data needs!

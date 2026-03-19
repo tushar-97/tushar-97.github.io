@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Tushar Aggarwal</title>
-<link href="assets/tailwind.css?v=17" rel="stylesheet"/>
+<link href="assets/tailwind.css?v=18" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Manrope:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
@@ -31,8 +31,24 @@
 <!-- TopAppBar Shell -->
 <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl fixed top-0 w-full z-50">
 <div class="flex justify-between items-center px-4 sm:px-6 lg:px-8 py-3 sm:py-4 max-w-screen-2xl mx-auto">
-<div class="text-base sm:text-lg font-bold tracking-tighter text-slate-900 dark:text-slate-50 uppercase leading-tight">
-  Tushar Aggarwal
+<div class="leading-tight">
+  <div class="text-base sm:text-lg font-bold tracking-tighter text-slate-900 dark:text-slate-50 uppercase leading-tight">Tushar Aggarwal</div>
+  <div class="sm:hidden mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] tracking-[0.18em] uppercase text-slate-600 dark:text-slate-300">
+    <span class="inline-flex items-center gap-1">
+      <span aria-hidden="true" class="material-symbols-outlined text-[14px] leading-none">work</span>
+      <span>Salesforce</span>
+    </span>
+    <span aria-hidden="true" class="opacity-60">·</span>
+    <span class="inline-flex items-center gap-1">
+      <span aria-hidden="true" class="material-symbols-outlined text-[14px] leading-none">location_on</span>
+      <span>Seattle</span>
+    </span>
+    <span aria-hidden="true" class="opacity-60">·</span>
+    <span class="inline-flex items-center gap-1">
+      <span aria-hidden="true" class="material-symbols-outlined text-[14px] leading-none">school</span>
+      <span>Georgia Tech</span>
+    </span>
+  </div>
 </div>
 <div class="hidden sm:flex flex-wrap items-center justify-end gap-x-3 gap-y-1 text-[10px] tracking-[0.2em] uppercase text-slate-600 dark:text-slate-300">
   <span class="inline-flex items-center gap-1.5">
@@ -53,7 +69,7 @@
 </div>
 </header>
 <!-- Main Viewport Canvas -->
-<main class="viewport-lock pt-16 sm:pt-20 pb-10">
+<main class="viewport-lock pt-24 sm:pt-20 pb-10">
 <div class="main-canvas px-4 sm:px-6 lg:px-12 h-full">
 <!-- Left Narrative Column -->
 <div class="col-span-12 md:col-span-5 flex flex-col justify-center md:pr-12 z-10 pt-10 sm:pt-12 pb-10 md:py-0">
@@ -104,7 +120,7 @@
 <!-- Right System Diagram & Contact -->
 <div class="col-span-12 md:col-span-4 flex flex-col justify-between py-8 md:py-8 md:pl-8 gap-8 md:gap-6">
 <!-- Node Network Diagram -->
-<div class="h-56 sm:h-64 md:h-56 lg:h-1/2 relative node-network-bg rounded-xl flex items-center justify-center">
+<div class="hidden md:flex h-56 lg:h-1/2 relative node-network-bg rounded-xl items-center justify-center">
 <svg class="w-full h-full opacity-40" viewbox="0 0 200 200">
 <circle cx="100" cy="100" fill="#fcd400" r="4"></circle>
 <circle cx="50" cy="60" fill="#f7f9fb" r="3"></circle>
@@ -134,13 +150,15 @@
 </main>
 <!-- Footer Shell -->
 <footer class="bg-transparent w-full z-50">
-<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 sm:gap-0 px-4 sm:px-6 lg:px-12 py-8 sm:py-10 w-full">
+<div class="px-4 sm:px-6 lg:px-12 py-8 sm:py-10 w-full">
+<div class="flex flex-col items-center text-center sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0">
 <div class="font-sans text-[10px] tracking-[0.2em] uppercase Manrope text-slate-400 dark:text-slate-600">
                 Built 100% with AI agents · Verified by humans
             </div>
-<div class="flex flex-wrap gap-x-8 gap-y-3 font-sans text-[10px] tracking-[0.2em] uppercase Manrope text-slate-400 dark:text-slate-600">
+<div class="flex flex-wrap justify-center sm:justify-end gap-x-8 gap-y-3 font-sans text-[10px] tracking-[0.2em] uppercase Manrope text-slate-400 dark:text-slate-600">
 <a class="hover:text-slate-900 dark:hover:text-slate-50 transition-all" href="https://www.linkedin.com/in/tushar-aggarwal/" rel="noreferrer" target="_blank">LINKEDIN</a>
 <a class="hover:text-slate-900 dark:hover:text-slate-50 transition-all" href="mailto:info@tusharaggarwal.com">EMAIL</a>
+</div>
 </div>
 </div>
 </footer>

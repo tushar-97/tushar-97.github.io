@@ -1128,6 +1128,192 @@ h3 {
   font-size: 13px;
 }
 
+.food-section {
+  border-top: 1px solid var(--line);
+}
+
+.food-directory {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.food-directory-card {
+  grid-column: span 5;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.food-directory-card.featured-food-card {
+  grid-column: span 7;
+  background: var(--amber-pale);
+}
+
+.food-directory-card.park-food-card {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.food-directory-card header {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 20px 22px;
+  color: var(--white);
+  background: var(--pine);
+}
+
+.food-directory-card header > span {
+  color: var(--gold);
+  font-family: var(--serif);
+  font-size: 27px;
+}
+
+.food-directory-card header p {
+  margin: 0 0 2px;
+  color: #cbd5e1;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.food-directory-card header h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 24px;
+}
+
+.park-food-card > header,
+.park-food-card > .food-warning {
+  grid-column: 1 / -1;
+}
+
+.food-time-group {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.food-time-group:last-child {
+  border-bottom: 0;
+}
+
+.food-time-group h4,
+.park-food-day h4 {
+  margin: 0 0 9px;
+  color: var(--amber);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.food-list,
+.food-detail-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.food-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.food-list li:last-child,
+.food-detail-list li:last-child {
+  border-bottom: 0;
+}
+
+.food-list strong {
+  font-size: 12px;
+}
+
+.food-list time {
+  flex: 0 0 auto;
+  color: var(--amber);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.food-recommendation {
+  margin: 18px 20px 5px;
+  padding: 13px 14px;
+  color: var(--pine-dark);
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 10px;
+  font-size: 11px;
+}
+
+.food-detail-list {
+  padding: 4px 20px 14px;
+}
+
+.food-detail-list li {
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(113, 53, 38, 0.16);
+}
+
+.food-detail-list strong,
+.food-detail-list span {
+  display: block;
+}
+
+.food-detail-list strong {
+  margin-bottom: 3px;
+  font-size: 12px;
+}
+
+.food-detail-list strong a {
+  text-underline-offset: 3px;
+}
+
+.food-detail-list span {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.park-food-day {
+  padding: 20px;
+  border-right: 1px solid var(--line);
+}
+
+.park-food-day:nth-of-type(3) {
+  border-right: 0;
+}
+
+.park-food-day p {
+  margin: 0;
+  padding: 8px 0;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.park-food-day p:last-child {
+  border-bottom: 0;
+}
+
+.park-food-day strong {
+  color: var(--ink);
+}
+
+.food-warning {
+  margin: 0;
+  padding: 13px 20px;
+  color: var(--white);
+  background: var(--amber);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
 .practical-section {
   border-top: 1px solid var(--line);
 }
@@ -1239,6 +1425,25 @@ footer a {
   .activity-grid,
   .practical-grid {
     grid-template-columns: 1fr;
+  }
+
+  .food-directory {
+    grid-template-columns: 1fr;
+  }
+
+  .food-directory-card,
+  .food-directory-card.featured-food-card,
+  .food-directory-card.park-food-card {
+    grid-column: 1;
+  }
+
+  .food-directory-card.park-food-card {
+    display: block;
+  }
+
+  .park-food-day {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
   }
 
   .practical-grid article {

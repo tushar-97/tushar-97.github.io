@@ -65,7 +65,7 @@ const tripDays = {
     date: "Saturday, September 5",
     theme: "The Lower Loop’s greatest hits",
     miles: "≈145 miles",
-    depart: "7:00 AM",
+    depart: "≈7:15 AM",
     finish: "≈9:20 PM",
     light: "Sunset 7:51",
     driving: "≈4½ hr base",
@@ -85,6 +85,13 @@ const tripDays = {
       [55, 277],
     ],
     stops: [
+      {
+        x: 55,
+        y: 277,
+        time: "7:15",
+        title: "Leave West Yellowstone",
+        detail: "Leave after breakfast and boxed-lunch pickup; 7:30 is the comfortable latest target.",
+      },
       {
         x: 210,
         y: 346,
@@ -171,6 +178,13 @@ const tripDays = {
       [110, 5],
     ],
     stops: [
+      {
+        x: 55,
+        y: 277,
+        time: "7:00",
+        title: "Leave West Yellowstone",
+        detail: "Start the long drive toward Lamar via Norris, Mammoth and Tower Junction.",
+      },
       {
         x: 590,
         y: 110,
@@ -267,7 +281,7 @@ const recoveryPlans = {
     summary: "Start Saturday in Midway before continuing around the Lower Loop.",
     tradeoff: "Keep Norris to its Porcelain Basin overlook and short loop.",
     stops: [
-      ["7:00", "Leave West Yellowstone"],
+      ["7:15", "Leave after breakfast and boxed-lunch pickup"],
       ["8:00–9:45", "Midway boardwalk + Grand Prismatic Overlook"],
       ["9:55–10:25", "Black Sand Basin"],
       ["11:10", "West Thumb"],
@@ -285,7 +299,7 @@ const recoveryPlans = {
     summary: "Use Saturday’s first hours for Old Faithful, Morning Glory and Black Sand.",
     tradeoff: "Skip Norris and make Yellowstone Lake a quick stop.",
     stops: [
-      ["7:00", "Leave West Yellowstone"],
+      ["7:15", "Leave after breakfast and boxed-lunch pickup"],
       ["8:00–10:30", "Old Faithful + Morning Glory Pool"],
       ["10:40–11:10", "Black Sand Basin"],
       ["11:55", "West Thumb"],
@@ -302,7 +316,7 @@ const recoveryPlans = {
     summary: "Recover both headline geyser experiences, then protect the canyon and sunset.",
     tradeoff: "Skip Norris, Yellowstone Lake and Artists Paintpots. West Thumb still gives you a lake view.",
     stops: [
-      ["7:00", "Leave West Yellowstone"],
+      ["7:15", "Leave after breakfast and boxed-lunch pickup"],
       ["8:00–9:45", "Midway boardwalk + Grand Prismatic Overlook"],
       ["10:05–12:30", "Old Faithful + Morning Glory Pool"],
       ["12:40–1:10", "Black Sand Basin"],
@@ -318,7 +332,7 @@ const recoveryPlans = {
     summary: "Keep the full Lower Loop plan shown in the Saturday route tab.",
     tradeoff: "You retain the longer Yellowstone Lake, canyon and Norris visits.",
     stops: [
-      ["7:00", "Leave West Yellowstone"],
+      ["7:15", "Leave after breakfast and boxed-lunch pickup"],
       ["8:05–8:40", "Black Sand Basin"],
       ["9:25", "West Thumb"],
       ["10:30", "Yellowstone Lake"],

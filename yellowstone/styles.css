@@ -1132,6 +1132,22 @@ h3 {
   border-top: 1px solid var(--line);
 }
 
+.food-directory a {
+  text-decoration-color: var(--sage);
+  text-underline-offset: 3px;
+}
+
+.food-directory a:hover {
+  color: var(--amber);
+  text-decoration-color: currentColor;
+}
+
+.food-directory a[href*="google.com/maps"]::after {
+  color: var(--amber);
+  content: " ↗";
+  font-size: 0.85em;
+}
+
 .food-directory {
   display: grid;
   grid-template-columns: repeat(12, 1fr);

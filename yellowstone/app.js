@@ -578,6 +578,12 @@ function selectRecoveryPlan(planId) {
   document.querySelector("#recovery-timeline").replaceChildren(...items);
 }
 
+const routeSection = document.querySelector("#route");
+const foodSection = document.querySelector("#food");
+if (routeSection && foodSection) {
+  routeSection.after(foodSection);
+}
+
 document.querySelectorAll(".day-tab").forEach((tab, index, tabs) => {
   tab.addEventListener("click", () => selectDay(tab.dataset.day));
   tab.addEventListener("keydown", (event) => {

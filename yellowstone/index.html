@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A focused three-day Yellowstone itinerary for September 4–6, 2026, with schematic route maps, thermal basin guide, viewpoints, activities, and closures."
+    />
+    <title>Yellowstone Field Guide · September 4–6, 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=3" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to itinerary</a>
+
+    <header class="hero">
+      <nav class="topbar" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="Yellowstone field guide home">
+          <span class="brand-mark" aria-hidden="true">Y</span>
+          <span>Yellowstone Field Guide</span>
+        </a>
+        <div class="nav-links">
+          <a href="#route">Route</a>
+          <a href="#basins">Basins</a>
+          <a href="#places">Saved places</a>
+          <a href="#practical">Practical</a>
+        </div>
+      </nav>
+
+      <div class="hero-content" id="top">
+        <p class="eyebrow">SEPTEMBER 4–6, 2026 · LABOR DAY WEEKEND</p>
+        <h1>Three days around Yellowstone’s fire and water.</h1>
+        <p class="hero-copy">
+          A high-coverage route from West Yellowstone through the geyser basins,
+          Yellowstone Lake, the canyon and Lamar Valley—exiting through Gardiner
+          after Sunday sunset.
+        </p>
+        <div class="hero-stats" aria-label="Trip overview">
+          <div><strong>3</strong><span>days</span></div>
+          <div><strong>≈440</strong><span>route miles</span></div>
+          <div><strong>7 AM</strong><span>weekend starts</span></div>
+          <div><strong>3</strong><span>sunsets</span></div>
+        </div>
+        <a class="primary-action" href="#route">Open day-by-day route</a>
+      </div>
+
+      <div class="hero-contours" aria-hidden="true">
+        <svg viewBox="0 0 520 420">
+          <path d="M75 350 C120 245 65 150 180 95 C285 45 355 100 420 42" />
+          <path d="M105 382 C155 280 105 185 205 125 C300 70 375 130 460 70" />
+          <path d="M160 415 C185 325 160 240 250 175 C335 115 405 170 500 118" />
+          <circle cx="292" cy="218" r="9" />
+          <circle cx="292" cy="218" r="22" />
+        </svg>
+      </div>
+    </header>
+
+    <nav class="journey-nav" aria-label="Trip guide sections">
+      <div>
+        <a href="#route"><span>01</span>Daily route</a>
+        <a href="#recovery"><span>02</span>Backup plan</a>
+        <a href="#basins"><span>03</span>Thermal areas</a>
+        <a href="#places"><span>04</span>Saved places</a>
+        <a href="#activities"><span>05</span>Activities</a>
+        <a href="#practical"><span>06</span>Practical</a>
+      </div>
+    </nav>
+
+    <main id="main">
+      <section class="section route-section" id="route">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">THE ROUTE</p>
+            <h2>One map for each day</h2>
+          </div>
+          <p>
+            Select a day to update the route and stop list. Maps are schematic;
+            use the official NPS map for navigation.
+          </p>
+        </div>
+
+        <div class="day-tabs" role="tablist" aria-label="Select itinerary day">
+          <button class="day-tab active" role="tab" aria-selected="true" data-day="friday">
+            <span>Friday</span>
+            <small>Geyser country</small>
+          </button>
+          <button class="day-tab" role="tab" aria-selected="false" data-day="saturday">
+            <span>Saturday</span>
+            <small>Lower Loop</small>
+          </button>
+          <button class="day-tab" role="tab" aria-selected="false" data-day="sunday">
+            <span>Sunday</span>
+            <small>Northern Range</small>
+          </button>
+        </div>
+
+        <div class="route-layout">
+          <div class="map-card">
+            <div class="map-toolbar">
+              <div>
+                <p id="map-kicker">FRIDAY · SEPTEMBER 4</p>
+                <h3 id="map-title">West entrance and geysers</h3>
+              </div>
+              <span id="map-miles">≈70 miles</span>
+            </div>
+
+            <svg
+              id="route-map"
+              viewBox="0 0 680 455"
+              role="img"
+              aria-labelledby="map-title map-description"
+            >
+              <desc id="map-description">Approximate Yellowstone route for the selected day.</desc>
+              <path
+                class="park-boundary"
+                d="M215 28 L370 33 L495 70 L615 92 L638 162 L592 252 L554 378 L408 435 L260 422 L145 360 L105 266 L145 150 Z"
+              />
+              <g class="base-roads">
+                <path d="M55 277 L165 267 L250 150 L274 57" />
+                <path d="M250 150 L405 203 L445 120 L590 110" />
+                <path d="M405 203 L420 278 L480 350 L340 405 L225 365 L198 300 L165 267" />
+                <path d="M405 203 L250 150 M274 57 L445 120 M420 278 L340 405" />
+                <path d="M274 57 L274 18" />
+              </g>
+              <g id="route-line"></g>
+              <g id="landmark-layer"></g>
+              <g id="stop-layer"></g>
+              <text class="map-note" x="490" y="425">SCHEMATIC · NORTH IS UP</text>
+            </svg>
+
+            <div class="map-legend">
+              <span><i class="legend-route"></i>Selected route</span>
+              <span><i class="legend-road"></i>Grand Loop roads</span>
+              <span><i class="legend-stop"></i>Planned stop</span>
+            </div>
+          </div>
+
+          <aside class="day-panel" aria-live="polite">
+            <div class="day-summary">
+              <p id="day-date">Friday, September 4</p>
+              <h3 id="day-theme">Thermal icons after check-in</h3>
+              <div class="summary-grid">
+                <div><span>Depart</span><strong id="day-depart">2:20 PM</strong></div>
+                <div><span>Finish</span><strong id="day-finish">≈9:15 PM</strong></div>
+                <div><span>Light</span><strong id="day-light">Sunset 7:53</strong></div>
+                <div><span>Driving</span><strong id="day-driving">≈2¼ hr base</strong></div>
+              </div>
+            </div>
+            <ol class="timeline" id="timeline"></ol>
+            <div class="view-tip">
+              <span>BEST VIEW</span>
+              <p id="view-tip">
+                The overlook reveals Grand Prismatic’s complete shape; the Midway boardwalk supplies scale and includes Excelsior.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section recovery-section" id="recovery">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">FRIDAY BACKUP PLAN</p>
+            <h2>Missed something? Recover it Saturday.</h2>
+          </div>
+          <p>
+            Saturday passes the same western geyser corridor. Choose what traffic,
+            parking or geyser timing prevented you from seeing Friday.
+          </p>
+        </div>
+
+        <div class="recovery-picker" role="group" aria-label="Choose missed Friday sights">
+          <button class="recovery-option active" data-recovery="midway">Missed Midway or the overlook</button>
+          <button class="recovery-option" data-recovery="faithful">Missed Old Faithful or Morning Glory</button>
+          <button class="recovery-option" data-recovery="most">Missed most of Friday</button>
+          <button class="recovery-option" data-recovery="none">Friday went to plan</button>
+        </div>
+
+        <div class="recovery-plan" aria-live="polite">
+          <div class="recovery-intro">
+            <p id="recovery-label">RECOVERY ROUTE A</p>
+            <h3 id="recovery-title">Grand Prismatic catch-up</h3>
+            <p id="recovery-summary">
+              Start Saturday in Midway before continuing around the Lower Loop.
+            </p>
+          </div>
+          <ol id="recovery-timeline"></ol>
+          <div class="recovery-tradeoff">
+            <span>TRADEOFF</span>
+            <p id="recovery-tradeoff">Keep Norris to its Porcelain Basin overlook and short loop.</p>
+          </div>
+        </div>
+
+        <p class="recovery-rule">
+          Recovery priority: Grand Prismatic Overlook → Old Faithful → Morning Glory → canyon → West Thumb.
+          Catching up on Morning Glory Saturday usually means dropping Norris.
+        </p>
+      </section>
+
+      <section class="section" id="basins">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">LAY OF THE LAND</p>
+            <h2>What each thermal area does best</h2>
+          </div>
+          <p>
+            Yellowstone’s basins are not interchangeable. Each has different
+            chemistry, plumbing and scenery.
+          </p>
+        </div>
+
+        <div class="feature-key" aria-label="Types of thermal features">
+          <article>
+            <span>01</span>
+            <div><h3>Geyser</h3><p>Constricted plumbing traps pressure until hot water erupts.</p></div>
+          </article>
+          <article>
+            <span>02</span>
+            <div><h3>Hot spring</h3><p>Open circulation releases heat continuously, often supporting vivid microbes.</p></div>
+          </article>
+          <article>
+            <span>03</span>
+            <div><h3>Mudpot</h3><p>Acid, limited water and clay create bubbling, splattering mud.</p></div>
+          </article>
+          <article>
+            <span>04</span>
+            <div><h3>Fumarole</h3><p>A steam vent—the hottest type, with too little water to form a pool.</p></div>
+          </article>
+        </div>
+
+        <div class="basin-grid">
+          <article class="basin-card featured">
+            <div class="basin-number">01</div>
+            <p class="basin-type">ERUPTIONS</p>
+            <h3>Upper Geyser Basin</h3>
+            <p>
+              The world’s densest concentration of predictable geysers. This is
+              the place to watch water erupt rather than simply admire color.
+            </p>
+            <ul>
+              <li>Old Faithful</li>
+              <li>Grand, Castle and Riverside geysers</li>
+              <li>Morning Glory Pool</li>
+              <li>Black Sand Basin nearby</li>
+            </ul>
+            <strong>Allow 2–4 hours</strong>
+          </article>
+
+          <article class="basin-card">
+            <div class="basin-number">02</div>
+            <p class="basin-type">COLOR + SCALE</p>
+            <h3>Midway Geyser Basin</h3>
+            <p>
+              Compact but monumental: Grand Prismatic and the steaming blue
+              expanse of Excelsior Geyser Crater.
+            </p>
+            <ul>
+              <li>Boardwalk for Excelsior and close views</li>
+              <li>Separate Fairy Falls trailhead for the overlook</li>
+            </ul>
+            <strong>Allow 1½–2 hours for both</strong>
+          </article>
+
+          <article class="basin-card">
+            <div class="basin-number">03</div>
+            <p class="basin-type">VARIETY + SUNSET</p>
+            <h3>Lower Geyser Basin</h3>
+            <p>
+              Yellowstone’s broadest mix of geysers, springs, mudpots and
+              fumaroles, spread along the Firehole River.
+            </p>
+            <ul>
+              <li>Fountain Paint Pot and Clepsydra</li>
+              <li>Great Fountain and White Dome</li>
+              <li>Firehole Lake Drive</li>
+            </ul>
+            <strong>Allow 1½–3 hours</strong>
+          </article>
+
+          <article class="basin-card">
+            <div class="basin-number">04</div>
+            <p class="basin-type">EXTREME GEOLOGY</p>
+            <h3>Norris Geyser Basin</h3>
+            <p>
+              The park’s hottest, most acidic and most changeable thermal area.
+              Porcelain is exposed; Back Basin is forested.
+            </p>
+            <ul>
+              <li>Steamboat—the tallest active geyser</li>
+              <li>Porcelain Basin overlook</li>
+              <li>Emerald Spring and Echinus</li>
+            </ul>
+            <strong>Allow 1½–2½ hours</strong>
+          </article>
+
+          <article class="basin-card">
+            <div class="basin-number">05</div>
+            <p class="basin-type">LAKE + MORNING LIGHT</p>
+            <h3>West Thumb</h3>
+            <p>
+              Thermal pools directly on Yellowstone Lake, combining mountain,
+              water and geothermal scenery in one compact boardwalk.
+            </p>
+            <ul>
+              <li>Abyss and Black pools</li>
+              <li>Fishing Cone</li>
+              <li>Lakeshore boardwalk</li>
+            </ul>
+            <strong>Allow 60–90 minutes</strong>
+          </article>
+
+          <article class="basin-card">
+            <div class="basin-number">06</div>
+            <p class="basin-type">TRAVERTINE</p>
+            <h3>Mammoth Hot Springs</h3>
+            <p>
+              Not a geyser basin. Hot water moving through limestone builds
+              white and orange travertine terraces.
+            </p>
+            <ul>
+              <li>Palette and Canary springs</li>
+              <li>Minerva Terrace</li>
+              <li>Upper Terrace Drive</li>
+            </ul>
+            <strong>Allow 1½–2½ hours</strong>
+          </article>
+        </div>
+
+        <div class="small-areas">
+          <article>
+            <h3>Artists Paintpots</h3>
+            <p>
+              A compact one-mile loop with colorful springs, steam vents and
+              especially active mudpots on the upper loop.
+            </p>
+          </article>
+          <article>
+            <h3>Mud Volcano</h3>
+            <p>
+              Acidic, noisy and sulfurous. Dragon’s Mouth and Churning Caldron
+              feel more violent than picturesque.
+            </p>
+          </article>
+          <article>
+            <h3>Black Sand Basin</h3>
+            <p>
+              A small Upper Basin satellite with Emerald Pool, Sunset Lake and
+              Cliff Geyser—excellent near evening.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section saved-section" id="places">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">YOUR SAVED PLACES</p>
+            <h2>What fits—and what does not</h2>
+          </div>
+          <p>
+            Related pins are grouped so one stop can cover several saved
+            locations.
+          </p>
+        </div>
+
+        <div class="coverage-layout">
+          <div>
+            <h3 class="coverage-title"><span class="status-dot planned"></span>Planned on the route</h3>
+            <div class="place-list" id="planned-places"></div>
+          </div>
+          <div class="coverage-side">
+            <div>
+              <h3 class="coverage-title"><span class="status-dot optional"></span>Optional or passing stop</h3>
+              <div class="place-list compact" id="optional-places"></div>
+            </div>
+            <div class="closed-card">
+              <p class="eyebrow">CLOSED</p>
+              <h3>Biscuit Basin + Sapphire Pool</h3>
+              <p>
+                Both remain inaccessible following the 2024 hydrothermal
+                explosion. Do not plan around Mystic Falls access from the
+                Biscuit boardwalk.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section activity-section" id="activities">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">OPTIONAL EXPERIENCES</p>
+            <h2>Choose one—not all three</h2>
+          </div>
+          <p>
+            Adding a major activity means dropping a basin or shortening the
+            canyon. The core itinerary is already full.
+          </p>
+        </div>
+
+        <div class="activity-grid">
+          <article>
+            <p>BEST ROUTE FIT</p>
+            <h3>Roosevelt horseback ride</h3>
+            <span>1–2 hours · Sunday</span>
+            <p>
+              Fits between Tower and Mammoth. Scheduled operating season runs
+              through September 7; reserve immediately.
+            </p>
+          </article>
+          <article>
+            <p>MORE ACTIVE</p>
+            <h3>Yellowstone River rafting</h3>
+            <span>About 3 hours · Sunday</span>
+            <p>
+              Launches from Gardiner. Replace horseback riding and shorten Tower
+              or Mammoth; return into the park for Swan Lake sunset.
+            </p>
+          </article>
+          <article>
+            <p>CALMER ALTERNATIVE</p>
+            <h3>Yellowstone Lake boat tour</h3>
+            <span>About 1 hour · Saturday</span>
+            <p>
+              Operating season extends through September 20. It would replace
+              part of Norris or the longer canyon walks.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section practical-section" id="practical">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">PRACTICAL NOTES</p>
+            <h2>Timing, safety and reality checks</h2>
+          </div>
+        </div>
+
+        <div class="practical-grid">
+          <article>
+            <h3>Drive-time assumptions</h3>
+            <ul>
+              <li>Friday finish: approximately 9:00–9:15 PM</li>
+              <li>Saturday finish: approximately 9:00–9:20 PM</li>
+              <li>Saturday and Sunday: leave West Yellowstone at 7:00 AM</li>
+              <li>Gardiner to BZN: about 1½ hours; airport around 10:00–10:20 PM</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Construction buffers</h3>
+            <ul>
+              <li>Up to 15 minutes near Firehole River Bridge</li>
+              <li>Up to 15 minutes around Bridge Bay</li>
+              <li>Up to 30 minutes east of Tower Junction</li>
+              <li>Wildlife jams can add 30–60+ minutes anywhere</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Wildlife and hiking</h3>
+            <ul>
+              <li>Carry accessible bear spray and know how to use it</li>
+              <li>Stay 100 yards from bears and wolves</li>
+              <li>Stay 25 yards from bison, elk and other wildlife</li>
+              <li>Avoid solo backcountry hiking around dawn and dusk</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="source-strip">
+          <p>Check these immediately before each departure:</p>
+          <div>
+            <a href="https://www.nps.gov/yell/planyourvisit/parkroads.htm" target="_blank" rel="noreferrer">NPS road status</a>
+            <a href="https://www.nps.gov/yell/planyourvisit/conditions.htm" target="_blank" rel="noreferrer">Current conditions</a>
+            <a href="https://www.nps.gov/yell/planyourvisit/situationreport.htm" target="_blank" rel="noreferrer">Trail conditions</a>
+            <a href="https://forecast.weather.gov/MapClick.php?zoneid=WYZ001" target="_blank" rel="noreferrer">NWS forecast</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        <span class="brand-mark" aria-hidden="true">Y</span>
+        <p>Built as a decision guide—not a substitute for official maps or current park alerts.</p>
+      </div>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="app.js?v=3"></script>
+  </body>
+</html>

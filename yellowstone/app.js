@@ -333,10 +333,67 @@ const recoveryPlans = {
 
 const svgNS = "http://www.w3.org/2000/svg";
 
+const googleMapsQueries = {
+  "Leave West Yellowstone": "West Entrance Yellowstone National Park",
+  "Midway boardwalk": "Midway Geyser Basin Yellowstone",
+  "Grand Prismatic Overlook": "Grand Prismatic Spring Overlook",
+  "Old Faithful": "Old Faithful Yellowstone",
+  "Morning Glory Pool": "Morning Glory Pool Yellowstone",
+  "Black Sand Basin": "Black Sand Basin Yellowstone",
+  "West Thumb": "West Thumb Geyser Basin",
+  "Yellowstone Lake": "Yellowstone Lake",
+  "Mud Volcano + Hayden": "Mud Volcano Yellowstone",
+  "Grand Canyon": "Artist Point Yellowstone",
+  "Norris Geyser Basin": "Norris Geyser Basin",
+  "Artists Paintpots": "Artists Paintpots Yellowstone",
+  "Lower Basin sunset": "Fountain Paint Pot Yellowstone",
+  "Lamar Valley": "Lamar Valley Yellowstone",
+  "Trout Lake": "Trout Lake Trailhead Yellowstone",
+  "Tower–Roosevelt": "Tower Fall Yellowstone",
+  "Mammoth terraces": "Mammoth Hot Springs",
+  "Swan Lake sunset": "Swan Lake Flat Yellowstone",
+  "Exit through Gardiner": "Roosevelt Arch Gardiner",
+};
+
+function googleMapsUrl(stopTitle) {
+  const query = googleMapsQueries[stopTitle] ?? `${stopTitle} Yellowstone National Park`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
+
 function createSvgElement(name, attributes = {}) {
   const node = document.createElementNS(svgNS, name);
   Object.entries(attributes).forEach(([key, value]) => node.setAttribute(key, value));
   return node;
+}
+
+function selectStop(stopIndex, scrollToTimeline = false) {
+  const mapStops = document.querySelectorAll(".map-stop");
+  const timelineStops = document.querySelectorAll(".timeline-stop");
+
+  mapStops.forEach((stop, index) => {
+    const selected = index === stopIndex;
+    stop.classList.toggle("selected", selected);
+    stop.setAttribute("aria-pressed", String(selected));
+  });
+
+  timelineStops.forEach((stop, index) => {
+    const selected = index === stopIndex;
+    stop.classList.toggle("selected", selected);
+    if (selected) {
+      stop.setAttribute("aria-current", "true");
+    } else {
+      stop.removeAttribute("aria-current");
+    }
+  });
+
+  if (scrollToTimeline && window.matchMedia("(max-width: 900px)").matches) {
+    timelineStops[stopIndex]?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+      block: "center",
+    });
+  }
 }
 
 function renderMap(day) {
@@ -373,7 +430,14 @@ function renderMap(day) {
   });
 
   day.stops.forEach((stop, index) => {
-    const group = createSvgElement("g");
+    const group = createSvgElement("g", {
+      class: "map-stop",
+      tabindex: "0",
+      role: "button",
+      "aria-label": `Highlight ${stop.title} in the itinerary`,
+      "aria-controls": `timeline-stop-${index}`,
+      "aria-pressed": "false",
+    });
     const title = createSvgElement("title");
     title.textContent = `${index + 1}. ${stop.title}`;
     const dot = createSvgElement("circle", {
@@ -389,24 +453,45 @@ function renderMap(day) {
     });
     number.textContent = index + 1;
     group.append(title, dot, number);
+    group.addEventListener("click", () => selectStop(index, true));
+    group.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      selectStop(index, true);
+    });
     stopLayer.append(group);
   });
 }
 
 function renderTimeline(day) {
   const timeline = document.querySelector("#timeline");
-  const items = day.stops.map((stop) => {
+  const items = day.stops.map((stop, index) => {
     const item = document.createElement("li");
+    const selectButton = document.createElement("button");
     const time = document.createElement("time");
     const content = document.createElement("div");
     const title = document.createElement("h4");
     const detail = document.createElement("p");
+    const mapLink = document.createElement("a");
 
+    item.id = `timeline-stop-${index}`;
+    item.className = "timeline-stop";
+    selectButton.type = "button";
+    selectButton.className = "timeline-select";
+    selectButton.setAttribute("aria-label", `Highlight ${stop.title} on the map`);
     time.textContent = stop.time;
     title.textContent = stop.title;
     detail.textContent = stop.detail;
+    mapLink.className = "map-link";
+    mapLink.href = googleMapsUrl(stop.title);
+    mapLink.target = "_blank";
+    mapLink.rel = "noreferrer";
+    mapLink.textContent = "Google Maps ↗";
     content.append(title, detail);
-    item.append(time, content);
+    selectButton.append(time, content);
+    item.append(selectButton, mapLink);
+    selectButton.addEventListener("click", () => selectStop(index));
+    mapLink.addEventListener("click", () => selectStop(index));
     return item;
   });
   timeline.replaceChildren(...items);

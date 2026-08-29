@@ -461,6 +461,24 @@ h3 {
   fill: var(--pine);
   stroke: var(--surface);
   stroke-width: 4;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: fill 160ms ease, stroke 160ms ease, stroke-width 160ms ease,
+    transform 160ms ease;
+}
+
+.map-stop {
+  cursor: pointer;
+  outline: none;
+}
+
+.map-stop:hover .stop-dot,
+.map-stop:focus .stop-dot,
+.map-stop.selected .stop-dot {
+  fill: var(--amber);
+  stroke: var(--gold);
+  stroke-width: 6;
+  transform: scale(1.18);
 }
 
 .stop-number {
@@ -560,40 +578,73 @@ h3 {
 }
 
 .timeline {
+  display: grid;
+  gap: 10px;
   margin: 0;
-  padding: 18px 22px 8px;
+  padding: 16px 18px 8px;
   list-style: none;
 }
 
 .timeline li {
   position: relative;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.timeline-stop {
+  transition: background 160ms ease, border-color 160ms ease,
+    box-shadow 160ms ease, transform 160ms ease;
+}
+
+.timeline-stop:hover {
+  background: var(--white);
+  border-color: var(--sage);
+  transform: translateY(-1px);
+}
+
+.timeline-select {
   display: grid;
   grid-template-columns: 52px 1fr;
   gap: 12px;
-  padding: 0 0 19px 18px;
-  border-left: 1px solid var(--line);
+  width: 100%;
+  padding: 14px 14px 9px;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
 }
 
-.timeline li::before {
-  position: absolute;
-  top: 4px;
-  left: -5px;
-  width: 9px;
-  height: 9px;
-  background: var(--amber);
-  border: 2px solid var(--surface);
-  border-radius: 50%;
-  content: "";
+.timeline-select:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: -3px;
+  border-radius: 11px;
 }
 
-.timeline li:last-child {
-  border-left-color: transparent;
+.timeline-stop.selected {
+  background: var(--amber-pale);
+  border-color: var(--amber);
+  box-shadow: 0 0 0 2px rgba(189, 87, 55, 0.16);
 }
 
 .timeline time {
-  color: var(--muted);
+  align-self: start;
+  min-width: 44px;
+  padding: 4px 7px;
+  color: var(--amber);
+  background: var(--amber-pale);
+  border-radius: 999px;
   font-size: 11px;
   font-weight: 700;
+  text-align: center;
+}
+
+.timeline-stop.selected time {
+  color: var(--white);
+  background: var(--amber);
 }
 
 .timeline h4 {
@@ -606,6 +657,28 @@ h3 {
   color: var(--muted);
   font-size: 12px;
   line-height: 1.45;
+}
+
+.map-link {
+  display: inline-flex;
+  margin: 0 14px 13px 78px;
+  color: var(--pine);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-decoration-color: var(--sage);
+  text-underline-offset: 3px;
+}
+
+.map-link:hover {
+  color: var(--amber);
+  text-decoration-color: currentColor;
+}
+
+.map-link:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 .view-tip {
@@ -1300,7 +1373,9 @@ footer a {
   .small-areas article,
   .place-item,
   .activity-grid article,
-  .journey-nav a {
+  .journey-nav a,
+  .timeline-stop,
+  .stop-dot {
     transition: none;
   }
 }

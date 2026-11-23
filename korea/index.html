@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700&family=Song+Myung&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=9" />
+    <link rel="stylesheet" href="styles.css?v=11" />
   </head>
   <body>
     <a class="skip-link" href="#itinerary">Skip to the day's stops</a>
@@ -34,9 +34,8 @@
     </header>
 
     <main>
+      <div class="days" id="day-tabs" role="tablist" aria-label="Trip days"></div>
       <div class="stage">
-        <div class="days" id="day-tabs" role="tablist" aria-label="Trip days"></div>
-
         <section class="mount" aria-labelledby="map-title">
           <div class="map-toolbar">
             <div>
@@ -91,7 +90,6 @@
             <span class="ghost" style="left: 44%; top: 7%"><b>종로</b>Jongno</span>
             <span class="ghost" style="left: 88%; top: 8%"><b>성수</b>Seongsu</span>
             <span class="ghost" style="left: 48%; top: 62%"><b>남산</b>Namsan</span>
-            <span class="ghost" style="left: 48%; top: 70%"><b>한강</b>Han River</span>
             <span class="ghost" style="left: 64%; top: 94%"><b>강남</b>Gangnam</span>
             <div id="pin-layer"></div>
           </div>
@@ -112,6 +110,10 @@
           <h2 id="practical-title">On the ground</h2>
         </div>
         <dl>
+          <div id="before">
+            <dt>Before you fly</dt>
+            <dd>Thursday Nov 26, at SEA check-in, ask whether the checked bags tag through to Delhi. That question is before the trip, not a Monday step.</dd>
+          </div>
           <div>
             <dt>Navigation</dt>
             <dd>Use Naver Maps. Google Maps is unreliable in Korea. Papago for translation, k.ride for taxis.</dd>
@@ -120,19 +122,19 @@
             <dt>Into the city</dt>
             <dd>Friday: limousine bus 6001 or 6015 from Incheon T1 Gate 5 / stop 5B to Chungmuro. ₩17,000 each, about 60–90 minutes. Card is fine.</dd>
           </div>
-          <div>
+          <div id="airport">
             <dt>Out to the airport</dt>
-            <dd>Monday: leave about 8:55 AM for the Seoul Station City Airport Terminal. Bag drop and departure immigration there; check-in cuts off at 9:25 AM. Then AREX Express to Terminal 2, ₩13,000 each, a separate ticket, about 43 minutes. At Incheon, the designated City Terminal lane is security only.</dd>
+            <dd>Monday is decided. Leave the apartment about 8:55 AM for Seoul Station B2. Buy the AREX Express ticket, then Korean Air check-in, bag drop, and departure immigration. Check-in cuts off at 9:25 AM. The Express is about 10:00–10:30 AM to Terminal 2, about 51 minutes, ₩13,000 each, a separate ticket. At Incheon the designated lane bypasses check-in and immigration; security screening still happens after it.</dd>
           </div>
-          <div>
+          <div id="climate">
             <dt>Climate Card</dt>
             <dd>Climate Card, not T-money, so there is no cash top-up. ₩13,000 a person: ₩3,000 for the card plus ₩10,000 for 3 days. Buy with a foreign card at a Line 1–8 station machine. First tap Saturday. Covers subway and city buses. The AREX Express and the airport limousine are not covered.</dd>
           </div>
-          <div>
+          <div id="cash">
             <dt>Cash</dt>
-            <dd>Carry ₩120,000 for two, in small bills, for food stalls only. Friday Myeongdong, then Saturday Gwangjang, then Sunday Hongdae. Monday is card only.</dd>
+            <dd>Convert $100 on Friday evening in Myeongdong. The changers are on Myeongdong 2-gil by the Chinese Embassy, and they need a passport. Carry ₩120,000 for two, in small bills, for food stalls only: Friday Myeongdong, then Saturday Gwangjang, then Sunday Hongdae. The leftover, about ₩14,000, pays one AREX Express ticket in cash on Monday. Buy the second ticket by card.</dd>
           </div>
-          <div>
+          <div id="tax">
             <dt>Tax refunds</dt>
             <dd>Passport in hand for instant refunds at Olive Young, Lotte, and Blue Elephant. At Incheon T2, choose the card refund so it lands in USD. Keep tax-free goods unopened.</dd>
           </div>
@@ -145,6 +147,6 @@
       <a href="../">Back to the site</a>
     </footer>
 
-    <script src="app.js?v=24"></script>
+    <script src="app.js?v=26"></script>
   </body>
 </html>

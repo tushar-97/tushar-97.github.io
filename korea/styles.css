@@ -68,7 +68,7 @@ a {
 }
 
 .mast {
-  padding: 22px 0 0;
+  padding: 12px 0 0;
 }
 
 .mast-bar,
@@ -104,38 +104,38 @@ a {
 }
 
 h1 {
-  margin: 28px 0 0;
+  margin: 8px 0 0;
   font-weight: 400;
 }
 
 h1 .ko {
   display: block;
   font-family: var(--display);
-  font-size: clamp(72px, 14vw, 132px);
-  line-height: 0.82;
+  font-size: clamp(44px, 8vw, 68px);
+  line-height: 0.85;
   letter-spacing: -0.04em;
 }
 
 h1 .en {
   display: block;
-  margin-top: 10px;
+  margin-top: 2px;
   font-family: var(--serif);
-  font-size: clamp(28px, 4vw, 46px);
+  font-size: clamp(22px, 3vw, 30px);
   line-height: 1.15;
 }
 
 .deck {
   max-width: 38rem;
-  margin: 14px 0 0;
+  margin: 8px 0 0;
   color: var(--muted);
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .dancheong {
   display: grid;
   grid-template-columns: 1.6fr 1fr 0.55fr 1fr 0.35fr;
   height: 9px;
-  margin-top: 26px;
+  margin-top: 12px;
 }
 
 .dancheong i:nth-child(1) { background: #c4372c; }
@@ -147,13 +147,20 @@ h1 .en {
 .stage {
   display: grid;
   gap: 14px;
-  margin-top: 18px;
+  margin-top: 8px;
 }
 
 .days {
+  position: sticky;
+  top: 0;
+  z-index: 6;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
+  width: min(1180px, calc(100% - 28px));
+  margin: 8px auto 0;
+  padding: 8px 0;
+  background: var(--ink);
 }
 
 .day-tab {
@@ -161,8 +168,8 @@ h1 .en {
   flex-direction: column;
   align-items: flex-start;
   gap: 2px;
-  min-height: 78px;
-  padding: 10px 10px 12px;
+  min-height: 58px;
+  padding: 8px 10px;
   color: var(--cream);
   text-align: left;
   background: transparent;
@@ -172,7 +179,7 @@ h1 .en {
 
 .day-tab .glyph {
   font-family: var(--display);
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 400;
   line-height: 1;
 }
@@ -510,6 +517,10 @@ h1 .en {
   border-top: 1px solid var(--line);
 }
 
+.stops > li {
+  border-bottom: 1px solid var(--line);
+}
+
 .stop {
   width: 100%;
   padding: 12px 4px 12px 10px;
@@ -517,7 +528,6 @@ h1 .en {
   text-align: left;
   background: transparent;
   border: 0;
-  border-bottom: 1px solid var(--line);
   box-shadow: inset 0 0 0 transparent;
   cursor: pointer;
 }
@@ -528,9 +538,57 @@ h1 .en {
 
 .stop-row {
   display: grid;
-  grid-template-columns: 32px minmax(0, 1fr);
+  grid-template-columns: 32px minmax(0, 1fr) 18px;
   gap: 10px;
   align-items: start;
+}
+
+.chev {
+  color: var(--accent);
+  font-size: 22px;
+  line-height: 1;
+}
+
+.detail {
+  padding: 0 8px 14px 52px;
+}
+
+.where {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  align-items: baseline;
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.where a,
+.jumps a,
+.return-note a,
+.list-tools button {
+  color: var(--accent);
+}
+
+.jumps,
+.list-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin: 10px 0;
+}
+
+.list-tools {
+  margin-bottom: 4px;
+}
+
+.list-tools button {
+  padding: 0;
+  font: inherit;
+  font-weight: 700;
+  background: none;
+  border: 0;
+  cursor: pointer;
 }
 
 .num {
@@ -584,7 +642,7 @@ h1 .en {
 .cluster {
   display: grid;
   gap: 10px;
-  margin: 10px 0 2px 42px;
+  margin: 12px 0 0;
   padding: 0 0 0 12px;
   list-style: none;
   border-left: 2px solid var(--accent);
@@ -660,23 +718,12 @@ h1 .en {
 
 @media (min-width: 980px) {
   .stage {
-    grid-template-columns: 112px minmax(0, 1fr) minmax(280px, 340px);
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
     align-items: start;
   }
 
   .days {
-    grid-template-columns: 1fr;
-  }
-
-  .day-tab {
-    min-height: 92px;
-  }
-
-  .panel {
-    position: sticky;
-    top: 16px;
-    max-height: calc(100dvh - 32px);
-    overflow: auto;
+    margin-top: 8px;
   }
 
   .practical dl {

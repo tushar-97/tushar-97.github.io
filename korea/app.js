@@ -105,6 +105,8 @@ const days = [
         kind: "airport",
         name: "Incheon Airport, Terminal 1",
         short: "Terminal 1",
+        address: "Incheon International Airport Terminal 1",
+        map: "인천국제공항 제1여객터미널",
         anchor: "e",
         time: "Land 5:35 PM",
         note: "Alaska AS119 from Seattle. Limousine bus 6001 or 6015 at Gate 5 / stop 5B, to Chungmuro Station.",
@@ -114,36 +116,47 @@ const days = [
       {
         place: "airbnb",
         kind: "home",
-        name: "Namsan Central View Suite",
+        name: "Home",
         short: "Home",
+        address: "24 Chungmu-ro, Jung-gu · Chungmuro Station Exit 7",
+        map: "충무로 24",
         anchor: "w",
         time: "Chungmuro",
-        note: "24 Chungmu-ro, next to Chungmuro Station Exit 7. Drop bags, then walk into Myeongdong.",
-        tags: ["Stay"],
+        note: "Namsan Central View Suite. Drop bags, then walk into Myeongdong.",
       },
       {
         place: "myeongdong",
         name: "Myeongdong",
         short: "Myeongdong",
+        address: "Myeongdong, Jung-gu",
+        map: "명동",
         anchor: "e",
         time: "Evening",
-        note: "One errand, an optional cash stop, dinner, then the carts.",
-        tags: ["Cash", "Passport"],
+        note: "Convert $100, pick up the Lotte card, dinner, then the carts.",
+        tags: ["Cash", "Passport · Lotte card and exchange"],
         cluster: [
           {
             name: "Lotte Department Store",
+            address: "81 Namdaemun-ro, Jung-gu",
+            map: "롯데백화점 본점 81 Namdaemun-ro",
             note: "Pick up the free Lotte tourist card at the 1F Tax Refund Lounge. Discounts only, not your transit card. Passport needed. This is Friday’s only shop stop.",
           },
           {
             name: "Money exchange",
-            note: "Optional, on Myeongdong 2-gil by the Chinese Embassy. Daesagwan, Daesin, and Ilpumhyang stay open until about 9:50 PM.",
+            address: "26 Myeongdong 2-gil, Jung-gu",
+            map: "대사관환전 명동2길",
+            note: "Convert $100 on Friday evening. By the Chinese Embassy: Daesagwan, Daesin, and Ilpumhyang, open until about 9:50 PM. Passport needed.",
           },
           {
             name: "Myeongdong Kyoja",
+            address: "29 Myeongdong 10-gil, Jung-gu",
+            map: "명동교자 본점",
             note: "Dinner, confirmed. Kalguksu and steamed dumplings, about ₩35,000 for two. Card is fine.",
           },
           {
             name: "Street food",
+            address: "Myeongdong-gil, Jung-gu",
+            map: "명동 명동길",
             note: "Carts around Myeongdong-gil and the cathedral. Cash only, about ₩25,000.",
           },
         ],
@@ -152,6 +165,8 @@ const days = [
         place: "cheonggye",
         name: "Cheonggyecheon",
         short: "Stream",
+        address: "Cheonggye Plaza, 1 Cheonggyecheon-ro, Jongno-gu",
+        map: "청계광장",
         anchor: "n",
         time: "After dinner",
         note: "Start near Cheonggye Plaza and walk the stream back toward the apartment. The Shinsegae and Lotte Christmas lights are on the way.",
@@ -171,16 +186,20 @@ const days = [
       {
         place: "airbnb",
         kind: "home",
-        name: "Chungmuro",
+        name: "Home",
         short: "Home",
+        address: "24 Chungmu-ro, Jung-gu · Chungmuro Station Exit 7",
+        map: "충무로 24",
         anchor: "w",
         time: "Morning",
-        note: "7-Eleven near the station: hazelnut coffee and banana milk, about ₩6,000 for two. Buy the Climate Card at a station machine before the first ride — foreign card, first tap today.",
+        note: "Namsan Central View Suite. 7-Eleven near the station: hazelnut coffee and banana milk, about ₩6,000 for two. Buy the Climate Card at a station machine before the first ride — foreign card, first tap today.",
       },
       {
         place: "palace",
         name: "Gyeongbokgung",
         short: "Palace",
+        address: "161 Sajik-ro, Jongno-gu",
+        map: "경복궁",
         anchor: "w",
         time: "Morning",
         note: "Entry ₩3,000 each. The guard-changing ceremony is at the main gate, Gwanghwamun.",
@@ -192,13 +211,19 @@ const days = [
         anchor: "e",
         time: "Late morning",
         note: "A walk between the palace and lunch.",
+        address: "37 Gyedong-gil, Jongno-gu",
+        map: "북촌한옥마을",
         cluster: [
           {
             name: "Bukchon Hanok Village",
+            address: "37 Gyedong-gil, Jongno-gu",
+            map: "북촌한옥마을",
             note: "Visitor hours 10 AM–5 PM.",
           },
           {
             name: "Samcheong-dong",
+            address: "Samcheong-ro, Jongno-gu",
+            map: "삼청동",
             note: "Cafe street on the way toward Ikseon-dong.",
           },
         ],
@@ -207,20 +232,28 @@ const days = [
         place: "ikseon",
         name: "Ikseon-dong",
         short: "Ikseon",
+        address: "Ikseon-dong, Jongno-gu",
+        map: "익선동",
         anchor: "w",
         time: "Lunch",
-        note: "The meal first, then two cafes with a gap between them.",
+        note: "The lunch first, then two cafes with a gap between them.",
         cluster: [
           {
-            name: "Favorite",
-            note: "Lunch. Pork-belly rosé pasta and whirlwind omurice, about ₩40,000 for two. Small room, so a queue is normal.",
+            name: "Favorite Ikseon",
+            address: "17-32 Supyo-ro 28-gil, Jongno-gu",
+            map: "익선취향",
+            note: "The lunch. Whole pork belly rosé pasta and whirlwind omurice, about ₩40,000 for two. Small room, so a queue is normal.",
           },
           {
             name: "Cheongsudang",
+            address: "Ikseon-dong, Jongno-gu",
+            map: "청수당 익선동",
             note: "Hanok cafe. Don’t go straight from the table.",
           },
           {
             name: "Soha Salt Pond",
+            address: "Ikseon-dong, Jongno-gu",
+            map: "소하염전 익선동",
             note: "Salt bread and coffee. You marked this one for sure.",
           },
         ],
@@ -229,42 +262,60 @@ const days = [
         place: "seongsu",
         name: "Seongsu",
         short: "Seongsu",
+        address: "Seongsu-dong, Seongdong-gu",
+        map: "성수동",
         anchor: "n",
         time: "Afternoon",
-        note: "HAUS NOWHERE first — it closes at 9. If this runs long, Blue Elephant, SPAO, and Musinsa can move to Myeongdong or Hongdae.",
-        tags: ["Passport"],
+        note: "HAUS NOWHERE first — it closes at 9. Saturday is the main shopping day. Sunday in Hongdae is only a backup.",
+        tags: ["Passport · instant tax refund"],
         cluster: [
           {
             name: "HAUS NOWHERE",
+            address: "433 Ttukseom-ro, Seongdong-gu",
+            map: "하우스 노웨어 성수",
             note: "Go here first. Gentle Monster on 2F, Tamburins on 3F, teahouse upstairs. Open 11 AM–9 PM.",
           },
           {
             name: "Blue Elephant",
-            note: "Non-prescription glasses, bought on the spot. Instant tax refund is likely.",
+            address: "13 Yeonmujang-gil, Seongdong-gu",
+            map: "블루엘리펀트 성수",
+            note: "Non-prescription glasses, bought on the spot. Instant tax refund is likely. Bring your passport.",
           },
           {
             name: "Fresh Bread Factory",
+            address: "Seongsu-dong, Seongdong-gu",
+            map: "프레시 브레드 팩토리 성수",
             note: "Salt bread to go, for Sunday morning.",
           },
           {
             name: "Musinsa Megastore",
-            note: "Clothes.",
+            address: "Seongsu-dong, Seongdong-gu",
+            map: "무신사 성수",
+            note: "Main clothes stop. The Hongdae branch on Sunday is a small backup.",
           },
           {
             name: "Musinsa Beauty",
-            note: "Cosmetics.",
+            address: "Seongsu-dong, Seongdong-gu",
+            map: "무신사 뷰티 성수",
+            note: "Cosmetics shop in Seongsu. Not the Evio clinic.",
           },
           {
             name: "NYUNYU",
+            address: "Seongsu-dong, Seongdong-gu",
+            map: "뉴뉴 성수",
             note: "Accessories.",
           },
           {
             name: "Chaakan",
-            note: "Shoes. Tax refund is usually from the receipt, not instant.",
+            address: "Seongsu-dong, Seongdong-gu",
+            map: "착한구두 성수",
+            note: "Main shoe stop. Tax refund is usually from the receipt, not instant. Sunday in Hongdae is a backup.",
           },
           {
             name: "Olive Young",
-            note: "Sunscreen, eye patches, skincare, supplements. Instant refund at the register.",
+            address: "Seongsu-dong, Seongdong-gu",
+            map: "올리브영 성수",
+            note: "Sunscreen, eye patches, skincare, supplements. Instant tax refund at the register. Bring your passport.",
           },
         ],
       },
@@ -272,6 +323,8 @@ const days = [
         place: "gwangjang",
         name: "Gwangjang Market",
         short: "Gwangjang",
+        address: "88 Changgyeonggung-ro, Jongno-gu",
+        map: "광장시장",
         anchor: "e",
         time: "Night",
         note: "Bindaetteok with makgeolli, mayak gimbap, yukhoe alley, and the kalguksu stall. About ₩45,000 for two. Stalls are cash only.",
@@ -281,9 +334,11 @@ const days = [
         place: "spao",
         name: "SPAO Myeongdong",
         short: "SPAO",
+        address: "Myeongdong, Jung-gu",
+        map: "스파오 명동",
         anchor: "s",
         time: "Late",
-        note: "Clothes, open late, on the way home from the market.",
+        note: "Main clothes stop, open late, on the way home. Sunday’s Hongdae branch is only a backup.",
       },
     ],
   },
@@ -294,43 +349,52 @@ const days = [
     kicker: "Sunday · Nov 29",
     title: "Clinic, Hongdae, Dosan",
     summary: "Clinic at 10:30, gifts at Seoul Station, lunch and a wander in Hongdae, then Dosan Jeongyuk on the 1st floor in Cheongdam.",
-    aside: "Researched and passed over: Hanmiok, Seolya Galbi, Dosan Black, Mongtan, and Ggupdang. Possible extra, not on this route: Jinseong Hanwoo Gopchang, Sindang Station Exit 7, one stop from home. Beef offal. Sunday noon to 11.",
+    aside: "Researched and passed over: Hanmiok, Seolya Galbi, Dosan Black, Mongtan, and Ggupdang. Possible extra, not on this route: Jinseong Hanwoo Gopchang, 243-1 Dasan-ro, Jung-gu, Sindang Station Exit 7, one stop from home. Beef offal. Sunday noon to 11.",
+    asideMap: "진성한우곱창 신당",
     color: "#0e7a62",
     returns: "Taxi or subway back to Chungmuro.",
     stops: [
       {
         place: "airbnb",
         kind: "home",
-        name: "Chungmuro",
+        name: "Home",
         short: "Home",
+        address: "24 Chungmu-ro, Jung-gu · Chungmuro Station Exit 7",
+        map: "충무로 24",
         anchor: "s",
         time: "Morning",
-        note: "Same 7-Eleven start: hazelnut coffee and banana milk. Eat the Seongsu salt bread if you still have it.",
+        note: "Namsan Central View Suite. Same 7-Eleven start: hazelnut coffee and banana milk. Eat the Seongsu salt bread if you still have it.",
       },
       {
         place: "evio",
         name: "Evio Clinic",
         short: "Evio",
+        address: "Myeongdong, Jung-gu · street address is in the booking",
+        map: "에비오의원 명동",
         anchor: "w",
         time: "10:30 AM",
-        note: "Booked for both of you, in Myeongdong. The street address is in the confirmation. Treatments are still unset, so the rest of the morning can move.",
-        tags: ["Booked"],
+        note: "Booked clinic appointment for both of you, not a beauty shop. Treatments are still unset, so the rest of the morning can move.",
+        tags: ["Clinic appointment"],
       },
       {
         place: "station",
         icon: "gift",
         name: "Lotte Mart, Seoul Station",
         short: "Lotte Mart",
+        address: "405 Hangang-daero, Yongsan-gu · inside Seoul Station",
+        map: "롯데마트 서울역점",
         anchor: "s",
         time: "Late morning",
-        note: "Inside Seoul Station. Gifts: four cousin gifts and sunscreen for your mom. About ₩75,000. Instant tax refund, passport needed.",
-        tags: ["Passport"],
+        note: "Gifts: four cousin gifts and sunscreen for your mom. About ₩75,000. Instant tax refund at the register. Bring your passport.",
+        tags: ["Passport · instant tax refund"],
       },
       {
         place: "odarijip",
         icon: "pot",
         name: "Odarijip, Hongdae",
         short: "Lunch",
+        address: "36 Jandari-ro 6-gil, Mapo-gu · Hongik Univ. Station Exit 9",
+        map: "오다리집 홍대점",
         anchor: "n",
         time: "Lunch",
         note: "Confirmed. Gejang for Akanksha. Charcoal pork BBQ, yukhoe, seafood pajeon, and stews for Tushar — no crab. About ₩100,000 for two. A few minutes from Hongik University Station Exit 9.",
@@ -342,23 +406,27 @@ const days = [
         short: "Hongdae",
         anchor: "s",
         time: "Afternoon",
-        note: "Light shopping and snacks between lunch and dinner. About ₩65,000 together.",
+        note: "Snacks, plus a small backup shop if Saturday ran long. SPAO, Musinsa, and Chaakan were the main visits yesterday. About ₩65,000 together.",
         tags: ["Cash for stalls"],
+        address: "Hongdae, Mapo-gu · Hongik University Station",
+        map: "홍대입구역",
         cluster: [
-          { name: "SPAO", note: "A small clothes stop." },
-          { name: "Musinsa", note: "A small clothes stop." },
-          { name: "Chaakan", note: "Shoes." },
-          { name: "Yoogane Dakgalbi", note: "Spicy stir-fried chicken." },
-          { name: "Jopok Tteokbokki", note: "Spicy rice cakes." },
-          { name: "ChangHwaDang", note: "Noodles and dumplings." },
-          { name: "Kyochon", note: "Fried chicken." },
-          { name: "Street stalls", note: "Hotteok and skewers. Cash only." },
+          { name: "SPAO", address: "Hongdae, Mapo-gu", map: "스파오 홍대", note: "Backup only. Saturday at Myeongdong is the main clothes stop." },
+          { name: "Musinsa", address: "Hongdae, Mapo-gu", map: "무신사 홍대", note: "Backup only. Saturday in Seongsu is the main visit." },
+          { name: "Chaakan", address: "Hongdae, Mapo-gu", map: "착한구두 홍대", note: "Backup only. Saturday in Seongsu is the main shoe stop." },
+          { name: "Yoogane Dakgalbi", address: "Hongdae, Mapo-gu", map: "유가네닭갈비 홍대", note: "Spicy stir-fried chicken." },
+          { name: "Jopok Tteokbokki", address: "Hongdae, Mapo-gu", map: "조폭떡볶이 홍대", note: "Spicy rice cakes." },
+          { name: "ChangHwaDang", address: "Hongdae, Mapo-gu", map: "창화당 홍대", note: "Noodles and dumplings." },
+          { name: "Kyochon", address: "Hongdae, Mapo-gu", map: "교촌치킨 홍대", note: "Fried chicken." },
+          { name: "Street stalls", address: "Hongdae, Mapo-gu", map: "홍대 거리 포장마차", note: "Hotteok and skewers. Cash only." },
         ],
       },
       {
         place: "dusan",
         name: "Dosan Jeongyuk, 1F",
         short: "Dosan",
+        address: "12 Seolleung-ro 155-gil, Gangnam-gu · 1st floor",
+        map: "도산정육 청담본점",
         anchor: "w",
         time: "Dinner",
         note: "Decided. 도산정육, 1st floor in Cheongdam — not Dosan Black upstairs. Jeju pork, grilled at the table. Sunday dinner from 5 PM, about four minutes from Apgujeong Rodeo Station Exit 5. Reservations are on CatchTable.",
@@ -367,14 +435,16 @@ const days = [
         place: "bars",
         name: "Cheongdam bars",
         short: "Bars",
+        address: "Cheongdam, Gangnam-gu",
+        map: "청담동",
         anchor: "n",
         time: "After dinner",
-        note: "All within about ten minutes of dinner. Cocktails are about ₩20,000–30,000. Budget about ₩100,000 for two bars.",
+        note: "The three planned bars, all within about ten minutes of dinner. Cocktails are about ₩20,000–30,000. Budget about ₩100,000 for two bars.",
         tags: ["Card OK"],
         cluster: [
-          { name: "Le Chamber", note: "Speakeasy cocktails." },
-          { name: "Zest", note: "Cocktails." },
-          { name: "Pine & Co", note: "Cocktails, Cheongdam / Apgujeong." },
+          { name: "Le Chamber", address: "Cheongdam-dong, Gangnam-gu", map: "르챔버 청담", note: "Speakeasy cocktails." },
+          { name: "Zest", address: "Cheongdam, Gangnam-gu", map: "제스트 청담", note: "Cocktails." },
+          { name: "Pine & Co", address: "Cheongdam / Apgujeong, Gangnam-gu", map: "파인앤코 청담", note: "Cocktails." },
         ],
       },
     ],
@@ -385,44 +455,70 @@ const days = [
     short: "Depart",
     kicker: "Monday · Nov 30",
     title: "Out to Terminal 2",
-    summary: "Leave about 8:55 AM for the City Airport Terminal. Checkout is noon, and the flight is 12:45 PM.",
+    summary: "City Airport Terminal is decided. Leave about 8:55 AM. Checkout is noon, and the flight is 12:45 PM.",
     color: "#1c1915",
     returns: "",
     stops: [
       {
         place: "airbnb",
         kind: "home",
-        name: "Namsan Central View Suite",
+        name: "Home",
         short: "Home",
+        address: "24 Chungmu-ro, Jung-gu · Chungmuro Station Exit 7",
+        map: "충무로 24",
         anchor: "e",
         time: "8:55 AM",
-        note: "Checkout is 12:00 PM. Leave about 8:55 so you make the City Airport Terminal. Check-in there cuts off at 9:25 AM.",
-        tags: ["Stay"],
+        note: "Namsan Central View Suite. Noon is only the checkout deadline. Leave with the bags about 8:55 AM for the City Airport Terminal anyway. Check-in there cuts off at 9:25 AM.",
       },
       {
         place: "station",
         name: "City Airport Terminal, Seoul Station",
         short: "City Terminal",
+        address: "Seoul Station B2, 405 Hangang-daero, Yongsan-gu",
+        map: "서울역 도심공항터미널",
         anchor: "w",
-        time: "Morning",
-        note: "Bag drop and departure immigration, then AREX Express to Terminal 2. Express is ₩13,000 each, a separate ticket, about 43 minutes. Not covered by the Climate Card. At SEA check-in on Thursday, ask whether the checked bags tag through to Delhi.",
-        toNext: { dashed: true, label: "AREX Express · 43 min", x: 150, y: 370 },
+        time: "By 9:25 AM",
+        note: "B2. Buy the AREX Express tickets, then Korean Air check-in, bag drop, and departure immigration. Check-in cuts off at 9:25 AM. The train to Terminal 2 is about 10:00–10:30 AM and takes about 51 minutes. ₩13,000 each, a separate ticket, not on the Climate Card. One ticket in cash from the leftover ₩14,000; the other by card.",
+        toNext: { dashed: true, label: "AREX Express · 51 min", x: 150, y: 370 },
       },
       {
         place: "icn",
         kind: "airport",
         name: "Incheon Airport, Terminal 2",
         short: "Terminal 2",
+        address: "Incheon International Airport Terminal 2",
+        map: "인천국제공항 제2여객터미널",
         anchor: "e",
         time: "12:45 PM",
-        note: "Korean Air KE497 to Delhi. Designated City Terminal lane: security only, since bags and departure immigration were done at Seoul Station. Tax-refund kiosks are after security — choose the card refund. Duty-free pickup is in T2.",
+        note: "Korean Air KE497 to Delhi. The designated City Terminal lane bypasses check-in and immigration. Security screening is after that, then the gate. Tax-refund kiosks are after security — choose the card refund. Duty-free pickup is in T2.",
         tags: ["Flight"],
       },
     ],
   },
 ];
 
-const state = { dayId: "fri", stop: 0 };
+const state = { dayId: "fri", stop: 0, open: new Set() };
+
+function naverHref(query) {
+  return `https://map.naver.com/p/search/${encodeURIComponent(query)}`;
+}
+
+function placeFacts(parent, place) {
+  const where = document.createElement("p");
+  where.className = "where";
+  if (place.address) {
+    const addr = document.createElement("span");
+    addr.textContent = place.address;
+    where.append(addr);
+  }
+  const link = document.createElement("a");
+  link.href = naverHref(place.map || place.name);
+  link.target = "_blank";
+  link.rel = "noreferrer";
+  link.textContent = "Naver Maps";
+  where.append(link);
+  parent.append(where);
+}
 
 const svgNS = "http://www.w3.org/2000/svg";
 
@@ -568,7 +664,7 @@ function renderMap(day) {
   pins.replaceChildren(...nodes);
 }
 
-function renderPanel(day, { scroll } = {}) {
+function renderPanel(day) {
   const panel = document.getElementById("itinerary");
   const kicker = document.createElement("p");
   kicker.className = "eyebrow";
@@ -579,14 +675,39 @@ function renderPanel(day, { scroll } = {}) {
   summary.className = "deck";
   summary.textContent = day.summary;
 
+  const jumps = document.createElement("p");
+  jumps.className = "jumps";
+  [
+    ["#airport", "Airport"],
+    ["#climate", "Climate Card"],
+    ["#cash", "Cash"],
+    ["#tax", "Tax refunds"],
+  ].forEach(([href, label]) => {
+    const link = document.createElement("a");
+    link.href = href;
+    link.textContent = label;
+    jumps.append(link);
+  });
+
+  const tools = document.createElement("p");
+  tools.className = "list-tools";
+  const expand = document.createElement("button");
+  expand.type = "button";
+  expand.dataset.expand = "all";
+  const allOpen = day.stops.every((_, index) => state.open.has(index));
+  expand.textContent = allOpen ? "Collapse all" : "Expand all";
+  tools.append(expand);
+
   const list = document.createElement("ol");
   list.className = "stops";
   day.stops.forEach((stop, index) => {
+    const open = state.open.has(index);
     const item = document.createElement("li");
     const button = document.createElement("button");
     button.type = "button";
     button.className = "stop";
     button.dataset.stop = String(index);
+    button.setAttribute("aria-expanded", open ? "true" : "false");
     if (index === state.stop) button.setAttribute("aria-current", "true");
 
     const row = document.createElement("span");
@@ -609,29 +730,40 @@ function renderPanel(day, { scroll } = {}) {
       tags.textContent = stop.tags.join(" · ");
       copy.append(tags);
     }
-    row.append(num, copy);
+    const chev = document.createElement("span");
+    chev.className = "chev";
+    chev.setAttribute("aria-hidden", "true");
+    chev.textContent = open ? "–" : "+";
+    row.append(num, copy, chev);
     button.append(row);
+    item.append(button);
 
-    if (stop.cluster && index === state.stop) {
-      const cluster = document.createElement("ol");
-      cluster.className = "cluster";
-      stop.cluster.forEach((place) => {
-        const placeItem = document.createElement("li");
-        const placeName = document.createElement("strong");
-        placeName.textContent = place.name;
-        const placeNote = document.createElement("span");
-        placeNote.textContent = place.note;
-        placeItem.append(placeName, placeNote);
-        cluster.append(placeItem);
-      });
-      button.append(cluster);
+    if (open) {
+      const detail = document.createElement("div");
+      detail.className = "detail";
+      placeFacts(detail, stop);
+      if (stop.cluster) {
+        const cluster = document.createElement("ol");
+        cluster.className = "cluster";
+        stop.cluster.forEach((place) => {
+          const placeItem = document.createElement("li");
+          const placeName = document.createElement("strong");
+          placeName.textContent = place.name;
+          const placeNote = document.createElement("span");
+          placeNote.textContent = place.note;
+          placeItem.append(placeName, placeNote);
+          placeFacts(placeItem, place);
+          cluster.append(placeItem);
+        });
+        detail.append(cluster);
+      }
+      item.append(detail);
     }
 
-    item.append(button);
     list.append(item);
   });
 
-  const pieces = [kicker, title, summary, list];
+  const pieces = [kicker, title, summary, jumps, tools, list];
   if (day.returns) {
     const back = document.createElement("p");
     back.className = "return-note";
@@ -641,37 +773,58 @@ function renderPanel(day, { scroll } = {}) {
   if (day.aside) {
     const aside = document.createElement("p");
     aside.className = "return-note";
-    aside.textContent = day.aside;
+    aside.append(day.aside);
+    if (day.asideMap) {
+      aside.append(" ");
+      const link = document.createElement("a");
+      link.href = naverHref(day.asideMap);
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      link.textContent = "Naver Maps";
+      aside.append(link);
+    }
     pieces.push(aside);
   }
   panel.replaceChildren(...pieces);
-
-  if (scroll) {
-    const current = panel.querySelector('.stop[aria-current="true"]');
-    current?.scrollIntoView({ block: "nearest" });
-  }
 }
 
-function render({ scroll = false } = {}) {
+function render() {
   const day = currentDay();
   renderTabs();
   renderMap(day);
-  renderPanel(day, { scroll });
+  renderPanel(day);
 }
 
 function selectDay(dayId) {
   if (!days.some((day) => day.id === dayId) || dayId === state.dayId) return;
   state.dayId = dayId;
   state.stop = 0;
+  state.open = new Set();
   render();
-  document.getElementById("itinerary").scrollTop = 0;
 }
 
-function selectStop(index, { scroll = false } = {}) {
+function toggleStop(index) {
   const day = currentDay();
-  if (index < 0 || index >= day.stops.length || index === state.stop) return;
+  if (index < 0 || index >= day.stops.length) return;
   state.stop = index;
-  render({ scroll });
+  if (state.open.has(index)) state.open.delete(index);
+  else state.open.add(index);
+  render();
+}
+
+function focusStop(index) {
+  const day = currentDay();
+  if (index < 0 || index >= day.stops.length) return;
+  state.stop = index;
+  state.open.add(index);
+  render();
+}
+
+function toggleAll() {
+  const day = currentDay();
+  const allOpen = day.stops.every((_, index) => state.open.has(index));
+  state.open = allOpen ? new Set() : new Set(day.stops.map((_, index) => index));
+  render();
 }
 
 document.getElementById("day-tabs").addEventListener("click", (event) => {
@@ -694,12 +847,17 @@ document.getElementById("day-tabs").addEventListener("keydown", (event) => {
 
 document.getElementById("pin-layer").addEventListener("click", (event) => {
   const pin = event.target.closest("[data-stop]");
-  if (pin) selectStop(Number(pin.dataset.stop), { scroll: true });
+  if (pin) focusStop(Number(pin.dataset.stop));
 });
 
 document.getElementById("itinerary").addEventListener("click", (event) => {
+  if (event.target.closest("a")) return;
+  if (event.target.closest("[data-expand]")) {
+    toggleAll();
+    return;
+  }
   const stop = event.target.closest("[data-stop]");
-  if (stop) selectStop(Number(stop.dataset.stop));
+  if (stop) toggleStop(Number(stop.dataset.stop));
 });
 
 render();

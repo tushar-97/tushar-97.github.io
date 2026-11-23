@@ -644,6 +644,7 @@ function renderMap(day) {
   layer.replaceChildren();
   const points = routePoints(day);
   const turn = loopTurn(points);
+  const routePaths = [];
   for (let i = 0; i < points.length - 1; i += 1) {
     const d = segmentPath(points[i], points[i + 1], turn);
     const casing = document.createElementNS(svgNS, "path");
@@ -666,6 +667,7 @@ function renderMap(day) {
     path.setAttribute("opacity", "0.95");
     if (points[i + 1].dashed) path.setAttribute("stroke-dasharray", "7 8");
     layer.append(path);
+    routePaths.push(path);
   }
 
   const pins = document.getElementById("pin-layer");
@@ -693,20 +695,23 @@ function renderMap(day) {
     nodes.push(button);
   });
 
-  for (let i = 0; i < points.length - 1; i += 1) {
-    const a = points[i];
-    const b = points[i + 1];
-    const len = Math.hypot(b.x - a.x, b.y - a.y);
-    if (len < 110 || b.label) continue;
+  routePaths.forEach((path, i) => {
+    if (points[i + 1].label) return;
+    const total = path.getTotalLength();
+    if (total < 110) return;
+    const at = total / 2;
+    const mid = path.getPointAtLength(at);
+    const before = path.getPointAtLength(Math.max(0, at - 3));
+    const after = path.getPointAtLength(Math.min(total, at + 3));
     const arrow = document.createElement("span");
     arrow.className = "route-arrow";
     arrow.setAttribute("aria-hidden", "true");
-    arrow.style.left = `${(((a.x + b.x) / 2) / W) * 100}%`;
-    arrow.style.top = `${(((a.y + b.y) / 2) / H) * 100}%`;
-    const angle = (Math.atan2(b.y - a.y, b.x - a.x) * 180) / Math.PI;
+    arrow.style.left = `${(mid.x / W) * 100}%`;
+    arrow.style.top = `${(mid.y / H) * 100}%`;
+    const angle = (Math.atan2(after.y - before.y, after.x - before.x) * 180) / Math.PI;
     arrow.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
     nodes.push(arrow);
-  }
+  });
 
   points.forEach((point) => {
     if (!point.label) return;

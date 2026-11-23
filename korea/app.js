@@ -96,9 +96,10 @@ const days = [
     short: "Arrive",
     kicker: "Friday · Nov 27",
     title: "Arrival evening",
-    summary: "Land at 5:35 PM, drop the bags at Chungmuro, then dinner and a night walk in Myeongdong.",
+    summary: "Arrival at 5:35 PM, transfer to Chungmuro, then dinner and an evening walk in Myeongdong.",
     color: "#c4372c",
     returns: "Walk back to the apartment at Chungmuro.",
+    returnLeg: "Walk · ~10 min to Home",
     stops: [
       {
         place: "icn",
@@ -109,20 +110,22 @@ const days = [
         map: "인천국제공항 제1여객터미널",
         anchor: "e",
         time: "Land 5:35 PM",
-        note: "Alaska AS119 from Seattle. Limousine bus 6001 or 6015 at Gate 5 / stop 5B, to Chungmuro Station.",
-        tags: ["Bus", "Card OK"],
-        toNext: { dashed: true, label: "Bus · about 70 min", x: 210, y: 360 },
+        note: "Alaska Airlines AS119 from Seattle. Limousine bus 6001 or 6015 departs from Gate 5, stop 5B, for Chungmuro Station.",
+        tags: ["Limousine bus", "Card accepted"],
+        toNext: { dashed: true, label: "Bus · 60–90 min", x: 210, y: 360 },
+        leg: "Limousine bus 6001/6015 · 60–90 min · ₩17,000 per person, card payment — not covered by the Climate Card",
       },
       {
         place: "airbnb",
         kind: "home",
         name: "Home",
         short: "Home",
-        address: "24 Chungmu-ro, Jung-gu · Chungmuro Station Exit 7",
-        map: "충무로 24",
+        address: "Chungmuro, Jung-gu · Chungmuro Station Exit 7",
+        map: "충무로역",
         anchor: "w",
         time: "Chungmuro",
-        note: "Namsan Central View Suite. Drop bags, then walk into Myeongdong.",
+        note: "Accommodation in Chungmuro, a short walk from Myeongdong.",
+        leg: "Walk · ~10 min to Myeongdong (or Metro Line 4, one stop, in wet weather)",
       },
       {
         place: "myeongdong",
@@ -132,32 +135,33 @@ const days = [
         map: "명동",
         anchor: "e",
         time: "Evening",
-        note: "Convert $100, pick up the Lotte card, dinner, then the carts.",
-        tags: ["Cash", "Passport · Lotte card and exchange"],
+        note: "Lotte Department Store, currency exchange, dinner at Myeongdong Kyoja, and street food.",
+        tags: ["Cash", "Passport · instant tax refund"],
+        leg: "Walk · ~5–10 min to Cheonggyecheon",
         cluster: [
           {
             name: "Lotte Department Store",
             address: "81 Namdaemun-ro, Jung-gu",
             map: "롯데백화점 본점 81 Namdaemun-ro",
-            note: "Pick up the free Lotte tourist card at the 1F Tax Refund Lounge. Discounts only, not your transit card. Passport needed. This is Friday’s only shop stop.",
+            note: "Collect the complimentary Lotte tourist card at the 1F Tax Refund Lounge. The card provides discounts only and is not a transit card. Passport required.",
           },
           {
             name: "Money exchange",
             address: "26 Myeongdong 2-gil, Jung-gu",
             map: "대사관환전 명동2길",
-            note: "Convert $100 on Friday evening. By the Chinese Embassy: Daesagwan, Daesin, and Ilpumhyang, open until about 9:50 PM. Passport needed.",
+            note: "Currency exchanges on Myeongdong 2-gil, near the Chinese Embassy, open until approximately 9:50 PM. Passport required.",
           },
           {
             name: "Myeongdong Kyoja",
             address: "29 Myeongdong 10-gil, Jung-gu",
             map: "명동교자 본점",
-            note: "Dinner, confirmed. Kalguksu and steamed dumplings, about ₩35,000 for two. Card is fine.",
+            note: "Kalguksu (knife-cut noodle soup) and mandu (steamed dumplings).",
           },
           {
             name: "Street food",
             address: "Myeongdong-gil, Jung-gu",
             map: "명동 명동길",
-            note: "Carts around Myeongdong-gil and the cathedral. Cash only, about ₩25,000.",
+            note: "Street-food stalls around Myeongdong-gil and the cathedral. Cash only.",
           },
         ],
       },
@@ -169,7 +173,7 @@ const days = [
         map: "청계광장",
         anchor: "n",
         time: "After dinner",
-        note: "Start near Cheonggye Plaza and walk the stream back toward the apartment. The Shinsegae and Lotte Christmas lights are on the way.",
+        note: "Begin at Cheonggye Plaza and follow the stream toward Chungmuro. The Shinsegae and Lotte Christmas lights are along the route.",
       },
     ],
   },
@@ -179,20 +183,22 @@ const days = [
     short: "Palace",
     kicker: "Saturday · Nov 28",
     title: "Palace, Seongsu, Gwangjang",
-    summary: "Palace in the morning, lunch in Ikseon-dong, shopping in Seongsu, then Gwangjang after dark.",
+    summary: "Gyeongbokgung in the morning, lunch in Ikseon-dong, shopping in Seongsu, and Gwangjang Market after dark.",
     color: "#1a4f8b",
     returns: "SPAO is the last stop, on the walk back to Chungmuro.",
+    returnLeg: "Walk · ~10 min to Home (or Metro Line 4, one stop)",
     stops: [
       {
         place: "airbnb",
         kind: "home",
         name: "Home",
         short: "Home",
-        address: "24 Chungmu-ro, Jung-gu · Chungmuro Station Exit 7",
-        map: "충무로 24",
+        address: "Chungmuro, Jung-gu · Chungmuro Station Exit 7",
+        map: "충무로역",
         anchor: "w",
         time: "Morning",
-        note: "Namsan Central View Suite. 7-Eleven near the station: hazelnut coffee and banana milk, about ₩6,000 for two. Buy the Climate Card at a station machine before the first ride — foreign card, first tap today.",
+        note: "Coffee and banana milk at the 7-Eleven near the station. The Climate Card can be purchased at station machines with a foreign card; first use is on Saturday.",
+        leg: "Metro Line 3 · Chungmuro → Gyeongbokgung, direct · ~15 min · Climate Card",
       },
       {
         place: "palace",
@@ -202,7 +208,8 @@ const days = [
         map: "경복궁",
         anchor: "w",
         time: "Morning",
-        note: "Entry ₩3,000 each. The guard-changing ceremony is at the main gate, Gwanghwamun.",
+        note: "Admission is ₩3,000 per person. The Royal Guard Changing Ceremony takes place at Gwanghwamun, the main gate.",
+        leg: "Walk · ~10–15 min to Bukchon",
       },
       {
         place: "bukchon",
@@ -210,7 +217,8 @@ const days = [
         short: "Bukchon",
         anchor: "e",
         time: "Late morning",
-        note: "A walk between the palace and lunch.",
+        note: "Walking route between Gyeongbokgung and lunch in Ikseon-dong.",
+        leg: "Walk · ~15 min to Ikseon-dong",
         address: "37 Gyedong-gil, Jongno-gu",
         map: "북촌한옥마을",
         cluster: [
@@ -218,13 +226,13 @@ const days = [
             name: "Bukchon Hanok Village",
             address: "37 Gyedong-gil, Jongno-gu",
             map: "북촌한옥마을",
-            note: "Visitor hours 10 AM–5 PM.",
+            note: "Visitor hours: 10:00 AM–5:00 PM.",
           },
           {
             name: "Samcheong-dong",
             address: "Samcheong-ro, Jongno-gu",
             map: "삼청동",
-            note: "Cafe street on the way toward Ikseon-dong.",
+            note: "Café street on the route toward Ikseon-dong.",
           },
         ],
       },
@@ -236,25 +244,26 @@ const days = [
         map: "익선동",
         anchor: "w",
         time: "Lunch",
-        note: "The lunch first, then two cafes with a gap between them.",
+        note: "Lunch at Favorite Ikseon, followed by Cheongsudang and Soha Salt Pond.",
+        leg: "Metro Line 2 · Euljiro 3-ga → Seongsu, direct · ~15 min · Climate Card",
         cluster: [
           {
             name: "Favorite Ikseon",
             address: "17-32 Supyo-ro 28-gil, Jongno-gu",
             map: "익선취향",
-            note: "The lunch. Whole pork belly rosé pasta and whirlwind omurice, about ₩40,000 for two. Small room, so a queue is normal.",
+            note: "Whole pork belly rosé pasta and whirlwind omurice (omelette over fried rice).",
           },
           {
             name: "Cheongsudang",
             address: "Ikseon-dong, Jongno-gu",
             map: "청수당 익선동",
-            note: "Hanok cafe. Don’t go straight from the table.",
+            note: "Traditional hanok café.",
           },
           {
             name: "Soha Salt Pond",
             address: "Ikseon-dong, Jongno-gu",
             map: "소하염전 익선동",
-            note: "Salt bread and coffee. You marked this one for sure.",
+            note: "Salt bread and coffee.",
           },
         ],
       },
@@ -266,56 +275,58 @@ const days = [
         map: "성수동",
         anchor: "n",
         time: "Afternoon",
-        note: "HAUS NOWHERE first — it closes at 9. Saturday is the main shopping day. Sunday in Hongdae is only a backup.",
+        note: "Begin at HAUS NOWHERE (closes 9:00 PM), then Blue Elephant, Musinsa, Chaakan, and Olive Young. Saturday is the principal shopping day; Hongdae provides secondary options on Sunday.",
         tags: ["Passport · instant tax refund"],
+        leg: "Metro Line 2 · Seongsu → Euljiro 4-ga · ~10 min, then walk ~5 min · Climate Card",
+        within: "Within Seongsu, all venues are within walking distance.",
         cluster: [
           {
             name: "HAUS NOWHERE",
             address: "433 Ttukseom-ro, Seongdong-gu",
             map: "하우스 노웨어 성수",
-            note: "Go here first. Gentle Monster on 2F, Tamburins on 3F, teahouse upstairs. Open 11 AM–9 PM.",
+            note: "First stop in Seongsu. Gentle Monster on 2F, Tamburins on 3F, and a teahouse on the upper floor. Open 11:00 AM–9:00 PM.",
           },
           {
             name: "Blue Elephant",
             address: "13 Yeonmujang-gil, Seongdong-gu",
             map: "블루엘리펀트 성수",
-            note: "Non-prescription glasses, bought on the spot. Instant tax refund is likely. Bring your passport.",
+            note: "Non-prescription glasses. Instant tax refund likely; passport required.",
           },
           {
             name: "Fresh Bread Factory",
             address: "Seongsu-dong, Seongdong-gu",
             map: "프레시 브레드 팩토리 성수",
-            note: "Salt bread to go, for Sunday morning.",
+            note: "Salt bread.",
           },
           {
             name: "Musinsa Megastore",
             address: "Seongsu-dong, Seongdong-gu",
             map: "무신사 성수",
-            note: "Main clothes stop. The Hongdae branch on Sunday is a small backup.",
+            note: "Primary clothing stop. The Hongdae branch on Sunday is a secondary option.",
           },
           {
             name: "Musinsa Beauty",
             address: "Seongsu-dong, Seongdong-gu",
             map: "무신사 뷰티 성수",
-            note: "Cosmetics shop in Seongsu. Not the Evio clinic.",
+            note: "Cosmetics retailer in Seongsu.",
           },
           {
             name: "NYUNYU",
             address: "Seongsu-dong, Seongdong-gu",
             map: "뉴뉴 성수",
-            note: "Accessories.",
+            note: "Accessories retailer.",
           },
           {
             name: "Chaakan",
             address: "Seongsu-dong, Seongdong-gu",
             map: "착한구두 성수",
-            note: "Main shoe stop. Tax refund is usually from the receipt, not instant. Sunday in Hongdae is a backup.",
+            note: "Primary footwear stop. Tax refunds are normally processed from the receipt rather than instantly. The Hongdae branch on Sunday is a secondary option.",
           },
           {
             name: "Olive Young",
             address: "Seongsu-dong, Seongdong-gu",
             map: "올리브영 성수",
-            note: "Sunscreen, eye patches, skincare, supplements. Instant tax refund at the register. Bring your passport.",
+            note: "Beauty and skincare retailer. Instant tax refund at checkout; passport required.",
           },
         ],
       },
@@ -327,8 +338,9 @@ const days = [
         map: "광장시장",
         anchor: "e",
         time: "Night",
-        note: "Bindaetteok with makgeolli, mayak gimbap, yukhoe alley, and the kalguksu stall. About ₩45,000 for two. Stalls are cash only.",
+        note: "Bindaetteok (mung bean pancake) with makgeolli (rice wine), mayak gimbap (mini seaweed rice rolls), yukhoe (seasoned raw beef), and kalguksu (knife-cut noodle soup).",
         tags: ["Cash only"],
+        leg: "Metro Line 2 · one stop to Euljiro 3-ga, then walk ~7 min to SPAO · Climate Card",
       },
       {
         place: "spao",
@@ -338,7 +350,7 @@ const days = [
         map: "스파오 명동",
         anchor: "s",
         time: "Late",
-        note: "Main clothes stop, open late, on the way home. Sunday’s Hongdae branch is only a backup.",
+        note: "Primary clothing stop, open late, located on the return route to Chungmuro. The Hongdae branch on Sunday is a secondary option.",
       },
     ],
   },
@@ -348,22 +360,22 @@ const days = [
     short: "Hongdae",
     kicker: "Sunday · Nov 29",
     title: "Clinic, Hongdae, Dosan",
-    summary: "Clinic at 10:30, gifts at Seoul Station, lunch and a wander in Hongdae, then Dosan Jeongyuk on the 1st floor in Cheongdam.",
-    aside: "Researched and passed over: Hanmiok, Seolya Galbi, Dosan Black, Mongtan, and Ggupdang. Possible extra, not on this route: Jinseong Hanwoo Gopchang, 243-1 Dasan-ro, Jung-gu, Sindang Station Exit 7, one stop from home. Beef offal. Sunday noon to 11.",
-    asideMap: "진성한우곱창 신당",
+    summary: "Evio Clinic at 10:30 AM, Lotte Mart at Seoul Station, lunch and shopping in Hongdae, and dinner at Dosan Jeongyuk (1F) in Cheongdam.",
     color: "#0e7a62",
     returns: "Taxi or subway back to Chungmuro.",
+    returnLeg: "Metro Line 3 · Apgujeong → Chungmuro, direct · ~10–12 min on the train, ~25–30 min door-to-door to Home",
     stops: [
       {
         place: "airbnb",
         kind: "home",
         name: "Home",
         short: "Home",
-        address: "24 Chungmu-ro, Jung-gu · Chungmuro Station Exit 7",
-        map: "충무로 24",
+        address: "Chungmuro, Jung-gu · Chungmuro Station Exit 7",
+        map: "충무로역",
         anchor: "s",
         time: "Morning",
-        note: "Namsan Central View Suite. Same 7-Eleven start: hazelnut coffee and banana milk. Eat the Seongsu salt bread if you still have it.",
+        note: "Coffee and banana milk at the 7-Eleven near Chungmuro Station.",
+        leg: "Walk · ~10 min to Evio Clinic (or Metro Line 4, one stop)",
       },
       {
         place: "evio",
@@ -373,8 +385,9 @@ const days = [
         map: "에비오의원 명동",
         anchor: "w",
         time: "10:30 AM",
-        note: "Booked clinic appointment for both of you, not a beauty shop. Treatments are still unset, so the rest of the morning can move.",
+        note: "Pre-booked clinic appointment in Myeongdong.",
         tags: ["Clinic appointment"],
+        leg: "Metro Line 4 · Myeongdong → Seoul Station, 2 stops · ~5 min · Climate Card",
       },
       {
         place: "station",
@@ -385,8 +398,9 @@ const days = [
         map: "롯데마트 서울역점",
         anchor: "s",
         time: "Late morning",
-        note: "Gifts: four cousin gifts and sunscreen for your mom. About ₩75,000. Instant tax refund at the register. Bring your passport.",
+        note: "Supermarket inside Seoul Station. Instant tax refund at checkout; passport required.",
         tags: ["Passport · instant tax refund"],
+        leg: "Airport Railroad all-stop train (not the Express) · Seoul Station → Hongik Univ. · ~12 min · Climate Card",
       },
       {
         place: "odarijip",
@@ -397,8 +411,9 @@ const days = [
         map: "오다리집 홍대점",
         anchor: "n",
         time: "Lunch",
-        note: "Confirmed. Gejang for Akanksha. Charcoal pork BBQ, yukhoe, seafood pajeon, and stews for Tushar — no crab. About ₩100,000 for two. A few minutes from Hongik University Station Exit 9.",
-        tags: ["Card OK"],
+        note: "Gejang (marinated crab), charcoal-grilled pork, yukhoe (seasoned raw beef), seafood pajeon (savoury seafood pancake), and stews.",
+        tags: ["Card accepted"],
+        leg: "Walk · from lunch to the Hongdae shopping area",
       },
       {
         place: "hongdae",
@@ -406,19 +421,20 @@ const days = [
         short: "Hongdae",
         anchor: "s",
         time: "Afternoon",
-        note: "Snacks, plus a small backup shop if Saturday ran long. SPAO, Musinsa, and Chaakan were the main visits yesterday. About ₩65,000 together.",
-        tags: ["Cash for stalls"],
+        note: "Street food and secondary shopping. SPAO, Musinsa, and Chaakan are scheduled as principal stops on Saturday.",
+        tags: ["Cash for street stalls"],
+        leg: "No direct train · Metro Line 2 → Suin-Bundang via Wangsimni to Apgujeong Rodeo · ~35–40 min, then walk 3–4 min · Climate Card (or taxi door-to-door)",
         address: "Hongdae, Mapo-gu · Hongik University Station",
         map: "홍대입구역",
         cluster: [
-          { name: "SPAO", address: "Hongdae, Mapo-gu", map: "스파오 홍대", note: "Backup only. Saturday at Myeongdong is the main clothes stop." },
-          { name: "Musinsa", address: "Hongdae, Mapo-gu", map: "무신사 홍대", note: "Backup only. Saturday in Seongsu is the main visit." },
-          { name: "Chaakan", address: "Hongdae, Mapo-gu", map: "착한구두 홍대", note: "Backup only. Saturday in Seongsu is the main shoe stop." },
-          { name: "Yoogane Dakgalbi", address: "Hongdae, Mapo-gu", map: "유가네닭갈비 홍대", note: "Spicy stir-fried chicken." },
-          { name: "Jopok Tteokbokki", address: "Hongdae, Mapo-gu", map: "조폭떡볶이 홍대", note: "Spicy rice cakes." },
-          { name: "ChangHwaDang", address: "Hongdae, Mapo-gu", map: "창화당 홍대", note: "Noodles and dumplings." },
+          { name: "SPAO", address: "Hongdae, Mapo-gu", map: "스파오 홍대", note: "Secondary option. The Myeongdong branch on Saturday is the primary clothing stop." },
+          { name: "Musinsa", address: "Hongdae, Mapo-gu", map: "무신사 홍대", note: "Secondary option. The Seongsu branch on Saturday is the primary stop." },
+          { name: "Chaakan", address: "Hongdae, Mapo-gu", map: "착한구두 홍대", note: "Secondary option. The Seongsu branch on Saturday is the primary footwear stop." },
+          { name: "Yoogane Dakgalbi", address: "Hongdae, Mapo-gu", map: "유가네닭갈비 홍대", note: "Dakgalbi (spicy stir-fried chicken)." },
+          { name: "Jopok Tteokbokki", address: "Hongdae, Mapo-gu", map: "조폭떡볶이 홍대", note: "Tteokbokki (spicy rice cakes)." },
+          { name: "ChangHwaDang", address: "Hongdae, Mapo-gu", map: "창화당 홍대", note: "Noodles and mandu (dumplings)." },
           { name: "Kyochon", address: "Hongdae, Mapo-gu", map: "교촌치킨 홍대", note: "Fried chicken." },
-          { name: "Street stalls", address: "Hongdae, Mapo-gu", map: "홍대 거리 포장마차", note: "Hotteok and skewers. Cash only." },
+          { name: "Street stalls", address: "Hongdae, Mapo-gu", map: "홍대 거리 포장마차", note: "Hotteok (filled sweet pancake) and skewers. Cash only." },
         ],
       },
       {
@@ -429,7 +445,8 @@ const days = [
         map: "도산정육 청담본점",
         anchor: "w",
         time: "Dinner",
-        note: "Decided. 도산정육, 1st floor in Cheongdam — not Dosan Black upstairs. Jeju pork, grilled at the table. Sunday dinner from 5 PM, about four minutes from Apgujeong Rodeo Station Exit 5. Reservations are on CatchTable.",
+        note: "Jeju pork, grilled at the table. Dinner from 5:00 PM; reservations via CatchTable.",
+        leg: "Walk · ~5–10 min to Le Chamber",
       },
       {
         place: "bars",
@@ -439,12 +456,13 @@ const days = [
         map: "청담동",
         anchor: "n",
         time: "After dinner",
-        note: "The three planned bars, all within about ten minutes of dinner. Cocktails are about ₩20,000–30,000. Budget about ₩100,000 for two bars.",
-        tags: ["Card OK"],
+        note: "Le Chamber, Zest, and Pine & Co — three cocktail bars in Cheongdam, each within approximately ten minutes of Dosan Jeongyuk. Cocktails are approximately ₩20,000–30,000.",
+        tags: ["Card accepted"],
+        within: "Between bars, travel by taxi, approximately 10 minutes per journey (Le Chamber → Zest → Pine & Co).",
         cluster: [
           { name: "Le Chamber", address: "Cheongdam-dong, Gangnam-gu", map: "르챔버 청담", note: "Speakeasy cocktails." },
-          { name: "Zest", address: "Cheongdam, Gangnam-gu", map: "제스트 청담", note: "Cocktails." },
-          { name: "Pine & Co", address: "Cheongdam / Apgujeong, Gangnam-gu", map: "파인앤코 청담", note: "Cocktails." },
+          { name: "Zest", address: "Cheongdam, Gangnam-gu", map: "제스트 청담", note: "Cocktail bar." },
+          { name: "Pine & Co", address: "Cheongdam / Apgujeong, Gangnam-gu", map: "파인앤코 청담", note: "Cocktail bar." },
         ],
       },
     ],
@@ -455,7 +473,7 @@ const days = [
     short: "Depart",
     kicker: "Monday · Nov 30",
     title: "Out to Terminal 2",
-    summary: "City Airport Terminal is decided. Leave about 8:55 AM. Checkout is noon, and the flight is 12:45 PM.",
+    summary: "Departure via the Seoul Station City Airport Terminal. Depart at approximately 8:55 AM; checkout is at noon and the flight leaves at 12:45 PM.",
     color: "#1c1915",
     returns: "",
     stops: [
@@ -464,11 +482,12 @@ const days = [
         kind: "home",
         name: "Home",
         short: "Home",
-        address: "24 Chungmu-ro, Jung-gu · Chungmuro Station Exit 7",
-        map: "충무로 24",
+        address: "Chungmuro, Jung-gu · Chungmuro Station Exit 7",
+        map: "충무로역",
         anchor: "e",
         time: "8:55 AM",
-        note: "Namsan Central View Suite. Noon is only the checkout deadline. Leave with the bags about 8:55 AM for the City Airport Terminal anyway. Check-in there cuts off at 9:25 AM.",
+        note: "Checkout is at noon, but departure with baggage is at approximately 8:55 AM for the City Airport Terminal, where check-in closes at 9:25 AM.",
+        leg: "Metro Line 4 · Chungmuro → Seoul Station, 2 stops · ~5 min · Climate Card (third day)",
       },
       {
         place: "station",
@@ -478,8 +497,9 @@ const days = [
         map: "서울역 도심공항터미널",
         anchor: "w",
         time: "By 9:25 AM",
-        note: "B2. Buy the AREX Express tickets, then Korean Air check-in, bag drop, and departure immigration. Check-in cuts off at 9:25 AM. The train to Terminal 2 is about 10:00–10:30 AM and takes about 51 minutes. ₩13,000 each, a separate ticket, not on the Climate Card. One ticket in cash from the leftover ₩14,000; the other by card.",
+        note: "Level B2. Purchase AREX Express tickets, then complete Korean Air check-in, baggage drop, and departure immigration. Check-in closes at 9:25 AM. The train to Terminal 2 departs at approximately 10:00–10:30 AM and takes approximately 51 minutes. The fare is ₩13,000 per person, on a separate ticket not covered by the Climate Card.",
         toNext: { dashed: true, label: "AREX Express · 51 min", x: 150, y: 370 },
+        leg: "AREX Express · ~51 min · ₩13,000 per person — separate ticket, not covered by the Climate Card",
       },
       {
         place: "icn",
@@ -490,7 +510,7 @@ const days = [
         map: "인천국제공항 제2여객터미널",
         anchor: "e",
         time: "12:45 PM",
-        note: "Korean Air KE497 to Delhi. The designated City Terminal lane bypasses check-in and immigration. Security screening is after that, then the gate. Tax-refund kiosks are after security — choose the card refund. Duty-free pickup is in T2.",
+        note: "Korean Air KE497 to Delhi. The designated City Airport Terminal lane bypasses check-in and immigration; security screening follows, before the gate. Tax-refund kiosks are located after security; select a card refund. Duty-free collection is in Terminal 2.",
         tags: ["Flight"],
       },
     ],
@@ -518,6 +538,21 @@ function placeFacts(parent, place) {
   link.textContent = "Naver Maps";
   where.append(link);
   parent.append(where);
+}
+
+function chevron() {
+  const svg = document.createElementNS(svgNS, "svg");
+  svg.setAttribute("viewBox", "0 0 16 16");
+  svg.setAttribute("aria-hidden", "true");
+  const path = document.createElementNS(svgNS, "path");
+  path.setAttribute("d", "M3.5 6 L8 10.5 L12.5 6");
+  path.setAttribute("fill", "none");
+  path.setAttribute("stroke", "currentColor");
+  path.setAttribute("stroke-width", "1.5");
+  path.setAttribute("stroke-linecap", "round");
+  path.setAttribute("stroke-linejoin", "round");
+  svg.append(path);
+  return svg;
 }
 
 const svgNS = "http://www.w3.org/2000/svg";
@@ -610,14 +645,25 @@ function renderMap(day) {
   const points = routePoints(day);
   const turn = loopTurn(points);
   for (let i = 0; i < points.length - 1; i += 1) {
+    const d = segmentPath(points[i], points[i + 1], turn);
+    const casing = document.createElementNS(svgNS, "path");
+    casing.setAttribute("d", d);
+    casing.setAttribute("fill", "none");
+    casing.setAttribute("stroke", "#f7f1e6");
+    casing.setAttribute("stroke-width", "6.5");
+    casing.setAttribute("stroke-linecap", "round");
+    casing.setAttribute("vector-effect", "non-scaling-stroke");
+    casing.setAttribute("opacity", "0.65");
+    if (points[i + 1].dashed) casing.setAttribute("stroke-dasharray", "7 8");
+    layer.append(casing);
     const path = document.createElementNS(svgNS, "path");
-    path.setAttribute("d", segmentPath(points[i], points[i + 1], turn));
+    path.setAttribute("d", d);
     path.setAttribute("fill", "none");
     path.setAttribute("stroke", day.color);
     path.setAttribute("stroke-width", "3");
     path.setAttribute("stroke-linecap", "round");
     path.setAttribute("vector-effect", "non-scaling-stroke");
-    path.setAttribute("opacity", "0.92");
+    path.setAttribute("opacity", "0.95");
     if (points[i + 1].dashed) path.setAttribute("stroke-dasharray", "7 8");
     layer.append(path);
   }
@@ -647,6 +693,21 @@ function renderMap(day) {
     nodes.push(button);
   });
 
+  for (let i = 0; i < points.length - 1; i += 1) {
+    const a = points[i];
+    const b = points[i + 1];
+    const len = Math.hypot(b.x - a.x, b.y - a.y);
+    if (len < 110 || b.label) continue;
+    const arrow = document.createElement("span");
+    arrow.className = "route-arrow";
+    arrow.setAttribute("aria-hidden", "true");
+    arrow.style.left = `${(((a.x + b.x) / 2) / W) * 100}%`;
+    arrow.style.top = `${(((a.y + b.y) / 2) / H) * 100}%`;
+    const angle = (Math.atan2(b.y - a.y, b.x - a.x) * 180) / Math.PI;
+    arrow.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+    nodes.push(arrow);
+  }
+
   points.forEach((point) => {
     if (!point.label) return;
     const at = point.labelAt || {
@@ -664,17 +725,40 @@ function renderMap(day) {
   pins.replaceChildren(...nodes);
 }
 
+function makeLeg(text) {
+  const item = document.createElement("li");
+  item.className = "leg";
+  const arrow = document.createElement("span");
+  arrow.className = "leg-arrow";
+  arrow.setAttribute("aria-hidden", "true");
+  arrow.textContent = "↓";
+  const copy = document.createElement("span");
+  copy.className = "leg-copy";
+  const split = text.indexOf(" · ");
+  if (split > 0) {
+    const mode = document.createElement("b");
+    mode.textContent = text.slice(0, split);
+    copy.append(mode, text.slice(split));
+  } else {
+    copy.textContent = text;
+  }
+  item.append(arrow, copy);
+  return item;
+}
+
 function renderPanel(day) {
   const panel = document.getElementById("itinerary");
   const kicker = document.createElement("p");
   kicker.className = "eyebrow";
   kicker.textContent = day.kicker;
   const title = document.createElement("h2");
-  title.textContent = day.title;
+  title.textContent = "Itinerary";
   const summary = document.createElement("p");
   summary.className = "deck";
   summary.textContent = day.summary;
 
+  const bar = document.createElement("div");
+  bar.className = "pane-bar";
   const jumps = document.createElement("p");
   jumps.className = "jumps";
   [
@@ -688,7 +772,6 @@ function renderPanel(day) {
     link.textContent = label;
     jumps.append(link);
   });
-
   const tools = document.createElement("p");
   tools.className = "list-tools";
   const expand = document.createElement("button");
@@ -697,12 +780,15 @@ function renderPanel(day) {
   const allOpen = day.stops.every((_, index) => state.open.has(index));
   expand.textContent = allOpen ? "Collapse all" : "Expand all";
   tools.append(expand);
+  bar.append(jumps, tools);
 
   const list = document.createElement("ol");
   list.className = "stops";
   day.stops.forEach((stop, index) => {
     const open = state.open.has(index);
     const item = document.createElement("li");
+    if (open) item.classList.add("is-open");
+    if (index === state.stop) item.classList.add("is-current");
     const button = document.createElement("button");
     button.type = "button";
     button.className = "stop";
@@ -718,22 +804,36 @@ function renderPanel(day) {
     const copy = document.createElement("span");
     const time = document.createElement("span");
     time.className = "meta";
-    time.textContent = `${index + 1} · ${stop.time}`;
+    time.textContent = stop.time;
     const name = document.createElement("strong");
     name.textContent = stop.name;
-    const note = document.createElement("em");
-    note.textContent = stop.note;
-    copy.append(time, name, note);
+    copy.append(time, name);
+    if (stop.note) {
+      const brief = document.createElement("span");
+      brief.className = "brief";
+      brief.textContent = stop.note;
+      copy.append(brief);
+    }
+    if (stop.address) {
+      const loc = document.createElement("span");
+      loc.className = "place-line";
+      loc.textContent = stop.address.split("·")[0].trim();
+      copy.append(loc);
+    }
     if (stop.tags) {
       const tags = document.createElement("span");
-      tags.className = "meta";
-      tags.textContent = stop.tags.join(" · ");
+      tags.className = "tags";
+      stop.tags.forEach((label) => {
+        const tag = document.createElement("span");
+        tag.textContent = label;
+        tags.append(tag);
+      });
       copy.append(tags);
     }
     const chev = document.createElement("span");
     chev.className = "chev";
     chev.setAttribute("aria-hidden", "true");
-    chev.textContent = open ? "–" : "+";
+    chev.append(chevron());
     row.append(num, copy, chev);
     button.append(row);
     item.append(button);
@@ -742,6 +842,12 @@ function renderPanel(day) {
       const detail = document.createElement("div");
       detail.className = "detail";
       placeFacts(detail, stop);
+      if (stop.within) {
+        const within = document.createElement("p");
+        within.className = "within";
+        within.textContent = stop.within;
+        detail.append(within);
+      }
       if (stop.cluster) {
         const cluster = document.createElement("ol");
         cluster.className = "cluster";
@@ -761,10 +867,16 @@ function renderPanel(day) {
     }
 
     list.append(item);
+    if (stop.leg) list.append(makeLeg(stop.leg));
   });
+  if (day.returnLeg) list.append(makeLeg(day.returnLeg));
 
-  const pieces = [kicker, title, summary, jumps, tools, list];
-  if (day.returns) {
+  const transport = document.createElement("p");
+  transport.className = "transport-note";
+  transport.textContent = "Metro and local bus journeys are covered by the Climate Card unless otherwise noted. Taxis are booked through k.ride.";
+
+  const pieces = [kicker, title, summary, bar, transport, list];
+  if (day.returns && !day.returnLeg) {
     const back = document.createElement("p");
     back.className = "return-note";
     back.textContent = day.returns;
@@ -818,6 +930,17 @@ function focusStop(index) {
   state.stop = index;
   state.open.add(index);
   render();
+  const card = document.querySelector(".stops > li.is-current");
+  if (card) revealCard(card);
+}
+
+function revealCard(card) {
+  const bar = document.querySelector(".days").getBoundingClientRect();
+  const topLimit = bar.height + 8;
+  const rect = card.getBoundingClientRect();
+  const viewBottom = window.innerHeight - 8;
+  if (rect.top >= topLimit && rect.bottom <= viewBottom) return;
+  window.scrollBy({ top: rect.top - topLimit, behavior: "auto" });
 }
 
 function toggleAll() {

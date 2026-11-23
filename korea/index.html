@@ -12,10 +12,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700&family=Song+Myung&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=11" />
+    <link rel="stylesheet" href="styles.css?v=17" />
   </head>
   <body>
     <a class="skip-link" href="#itinerary">Skip to the day's stops</a>
@@ -27,8 +27,8 @@
       </div>
       <h1><span class="ko">서울</span><span class="en">One day at a time.</span></h1>
       <p class="deck">
-        Pins sit on neighborhoods, in the order you’ll visit them. A shopping
-        street or a run of snacks is one pin; open it for the list inside.
+        Neighborhood pins in visit order. Shopping streets and food clusters
+        are grouped under a single pin; expand a stop for the venues within it.
       </p>
       <div class="dancheong" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
     </header>
@@ -47,57 +47,70 @@
 
           <div class="map-frame">
             <svg id="map" viewBox="0 0 680 500" preserveAspectRatio="none" role="img" aria-labelledby="map-title">
-              <rect width="680" height="500" fill="#c5ddd4" />
+              <rect width="680" height="500" fill="#bfdcd2" />
               <path
                 fill="#f3e6d0"
                 d="M124 0 H680 V500 H508 C458 468 466 400 508 356 C430 328 250 352 150 332 C108 316 96 246 108 168 C118 78 116 24 124 0 Z"
               />
+              <!-- District zones (schematic) -->
+              <ellipse cx="356" cy="96" rx="158" ry="66" fill="#e9d5ae" />
+              <ellipse cx="182" cy="228" rx="62" ry="66" fill="#e9d5ae" />
+              <ellipse cx="438" cy="238" rx="104" ry="48" fill="#e9d5ae" />
+              <ellipse cx="612" cy="150" rx="58" ry="62" fill="#e9d5ae" />
+              <ellipse cx="566" cy="420" rx="108" ry="52" fill="#e9d5ae" />
+              <ellipse cx="54" cy="408" rx="40" ry="28" fill="#f3e6d0" />
+              <!-- Namsan hill, south-west of Chungmuro -->
+              <path d="M302 306 L356 268 L410 306 Z" fill="#b9cdb2" />
+              <path d="M338 282 L356 268 L374 282 L362 282 L356 276 L350 282 Z" fill="#8fae8d" />
+              <!-- Cheonggyecheon -->
+              <path
+                d="M206 128 C340 112 486 140 654 118"
+                fill="none"
+                stroke="#7db8ad"
+                stroke-width="7"
+                stroke-linecap="round"
+              />
+              <path
+                d="M206 128 C340 112 486 140 654 118"
+                fill="none"
+                stroke="#2f6f64"
+                stroke-width="1.6"
+                stroke-linecap="round"
+              />
+              <!-- Han River -->
               <path
                 class="river"
-                d="M138 334 C230 308 330 356 455 328 C555 308 630 326 680 314"
+                d="M132 340 C230 312 330 360 455 330 C555 310 628 328 680 316"
                 fill="none"
                 stroke="#8fbfb4"
-                stroke-width="30"
+                stroke-width="34"
                 stroke-linecap="round"
               />
               <path
-                d="M138 334 C230 308 330 356 455 328 C555 308 630 326 680 314"
+                d="M132 340 C230 312 330 360 455 330 C555 310 628 328 680 316"
                 fill="none"
                 stroke="#2f6f64"
-                stroke-width="2.5"
+                stroke-width="2"
                 stroke-linecap="round"
               />
-              <ellipse cx="54" cy="408" rx="38" ry="26" fill="#f3e6d0" />
-              <ellipse cx="329" cy="74" rx="72" ry="28" fill="#e7d3b0" />
-              <ellipse cx="436" cy="246" rx="82" ry="34" fill="#e7d3b0" />
-              <ellipse cx="182" cy="226" rx="52" ry="58" fill="#e7d3b0" />
-              <ellipse cx="636" cy="142" rx="38" ry="28" fill="#e7d3b0" />
-              <ellipse cx="438" cy="286" rx="34" ry="14" fill="#e4c98a" />
-              <path
-                d="M210 122 C340 108 480 136 650 116"
-                fill="none"
-                stroke="#2f6f64"
-                stroke-width="2.5"
-                stroke-linecap="round"
-              />
-              <ellipse cx="568" cy="414" rx="74" ry="32" fill="#e7d3b0" />
               <g id="route-layer"></g>
             </svg>
 
-            <p class="compass" aria-hidden="true">북</p>
-            <span class="ghost" style="left: 16%; top: 94%"><b>인천</b>Incheon</span>
-            <span class="ghost" style="left: 18%; top: 32%"><b>홍대</b>Hongdae</span>
-            <span class="ghost" style="left: 44%; top: 7%"><b>종로</b>Jongno</span>
-            <span class="ghost" style="left: 88%; top: 8%"><b>성수</b>Seongsu</span>
-            <span class="ghost" style="left: 48%; top: 62%"><b>남산</b>Namsan</span>
-            <span class="ghost" style="left: 64%; top: 94%"><b>강남</b>Gangnam</span>
+            <p class="compass" aria-hidden="true"><span class="compass-arrow">↑</span> 북 <span class="compass-n">N</span></p>
+            <span class="ghost" style="left: 15%; top: 93%"><b>인천</b>Incheon</span>
+            <span class="ghost" style="left: 18%; top: 30%"><b>홍대</b>Hongdae</span>
+            <span class="ghost" style="left: 42%; top: 8%"><b>종로</b>Jongno</span>
+            <span class="ghost" style="left: 87%; top: 10%"><b>성수</b>Seongsu</span>
+            <span class="ghost" style="left: 52%; top: 60%"><b>남산</b>Namsan</span>
+            <span class="ghost" style="left: 86%; top: 93%"><b>강남</b>Gangnam</span>
             <div id="pin-layer"></div>
           </div>
 
           <div class="legend">
             <span><i class="legend-stop"></i>Visit order</span>
             <span><i class="legend-home"></i>Home</span>
-            <span><i class="legend-dash"></i>Airport leg</span>
+            <span><i class="legend-dash"></i>Airport connection</span>
+            <span class="legend-note">Schematic map — areas in relative position, not to scale</span>
           </div>
         </section>
 
@@ -106,47 +119,47 @@
 
       <section class="practical" aria-labelledby="practical-title">
         <div>
-          <p class="eyebrow">While you’re there</p>
+          <p class="eyebrow">Practical information</p>
           <h2 id="practical-title">On the ground</h2>
         </div>
         <dl>
           <div id="before">
-            <dt>Before you fly</dt>
-            <dd>Thursday Nov 26, at SEA check-in, ask whether the checked bags tag through to Delhi. That question is before the trip, not a Monday step.</dd>
+            <dt>Before departure</dt>
+            <dd>At check-in at Seattle (SEA) on Thursday, November 26, confirm whether checked baggage will be tagged through to Delhi.</dd>
           </div>
           <div>
             <dt>Navigation</dt>
-            <dd>Use Naver Maps. Google Maps is unreliable in Korea. Papago for translation, k.ride for taxis.</dd>
+            <dd>Use Naver Maps for navigation; Google Maps has limited functionality in Korea. Papago is recommended for translation and k.ride for taxis.</dd>
           </div>
           <div>
             <dt>Into the city</dt>
-            <dd>Friday: limousine bus 6001 or 6015 from Incheon T1 Gate 5 / stop 5B to Chungmuro. ₩17,000 each, about 60–90 minutes. Card is fine.</dd>
+            <dd>Friday: limousine bus 6001 or 6015 from Incheon Terminal 1, Gate 5 / stop 5B, to Chungmuro. The fare is ₩17,000 per person and the journey takes approximately 60–90 minutes. Card payment is accepted.</dd>
           </div>
           <div id="airport">
             <dt>Out to the airport</dt>
-            <dd>Monday is decided. Leave the apartment about 8:55 AM for Seoul Station B2. Buy the AREX Express ticket, then Korean Air check-in, bag drop, and departure immigration. Check-in cuts off at 9:25 AM. The Express is about 10:00–10:30 AM to Terminal 2, about 51 minutes, ₩13,000 each, a separate ticket. At Incheon the designated lane bypasses check-in and immigration; security screening still happens after it.</dd>
+            <dd>Monday: depart the apartment at approximately 8:55 AM for Seoul Station, Level B2. Purchase AREX Express tickets, then complete Korean Air check-in, baggage drop, and departure immigration. Check-in closes at 9:25 AM. The Express departs at approximately 10:00–10:30 AM for Terminal 2; the journey takes approximately 51 minutes and costs ₩13,000 per person on a separate ticket. At Incheon, the designated lane bypasses check-in and immigration; security screening follows.</dd>
           </div>
           <div id="climate">
             <dt>Climate Card</dt>
-            <dd>Climate Card, not T-money, so there is no cash top-up. ₩13,000 a person: ₩3,000 for the card plus ₩10,000 for 3 days. Buy with a foreign card at a Line 1–8 station machine. First tap Saturday. Covers subway and city buses. The AREX Express and the airport limousine are not covered.</dd>
+            <dd>The Climate Card is used instead of T-money and does not require cash top-ups. The cost is ₩13,000 per person: ₩3,000 for the card and ₩10,000 for three days. It can be purchased with a foreign card at Line 1–8 station machines, with first use on Saturday. The card covers the subway and city buses; the AREX Express and airport limousine bus are not covered.</dd>
           </div>
           <div id="cash">
             <dt>Cash</dt>
-            <dd>Convert $100 on Friday evening in Myeongdong. The changers are on Myeongdong 2-gil by the Chinese Embassy, and they need a passport. Carry ₩120,000 for two, in small bills, for food stalls only: Friday Myeongdong, then Saturday Gwangjang, then Sunday Hongdae. The leftover, about ₩14,000, pays one AREX Express ticket in cash on Monday. Buy the second ticket by card.</dd>
+            <dd>Cash is required for market and street-food stalls. Currency exchanges on Myeongdong 2-gil, near the Chinese Embassy, require a passport. Approximately ₩120,000 in small denominations covers the stalls in Myeongdong (Friday), Gwangjang (Saturday), and Hongdae (Sunday).</dd>
           </div>
           <div id="tax">
             <dt>Tax refunds</dt>
-            <dd>Passport in hand for instant refunds at Olive Young, Lotte, and Blue Elephant. At Incheon T2, choose the card refund so it lands in USD. Keep tax-free goods unopened.</dd>
+            <dd>Present a passport for instant refunds at Olive Young, Lotte, and Blue Elephant. At Incheon Terminal 2, select a card refund for payment in USD. Keep tax-free purchases unopened.</dd>
           </div>
         </dl>
       </section>
     </main>
 
     <footer class="colophon">
-      <p>Neighborhood schematic for Nov 27–30. Pins are areas, not doorways. Late November is about 9°C by day, near freezing at night, and dark by 5:30 PM.</p>
+      <p>Neighborhood schematic, November 27–30. Pins indicate areas rather than exact entrances. Late November temperatures are approximately 9°C during the day and near freezing at night, with darkness by 5:30 PM.</p>
       <a href="../">Back to the site</a>
     </footer>
 
-    <script src="app.js?v=26"></script>
+    <script src="app.js?v=43"></script>
   </body>
 </html>
